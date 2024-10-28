@@ -6,115 +6,148 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Khamgaon.online - Coming Soon</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <!-- Favicon -->
+
     <link rel="icon" href="/images/favicon.png" type="image/x-icon">
-    
+
     <style>
         body {
-            background: linear-gradient(135deg, #6666ff, #cc66ff);
+            background-color: #f1f1f1;
             font-family: 'Inter', sans-serif;
         }
-        h1, h2, h3 {
-            font-family: 'Merriweather', serif;
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
         }
+
         .image-container {
-            position: relative;
-            border-radius: 4px;
+            background: #fdfdfd;
+            z-index: 1;
+            border-radius: 6px;
+            border: 2px solid #ddd; /* Match with the theme */
+            overflow: hidden; /* Prevent overflow from the image */
+            gap: 8px;
+            padding-bottom: 8px;
         }
+
         .image-container img {
             width: 100%;
-            height: 100%;
+            height: 200px;
             object-fit: cover;
             display: block;
-            max-height: 150px;
+            border-radius: 6px;
+            transition: transform 0.3s, filter 0.3s; /* Add transition for hover effects */
+            filter: contrast(1.2); /* Initial filter settings */
         }
-        .logo-container img {
-            max-width: 150px;
-            height: auto;
-            object-fit: contain;
-            margin: 0 auto;
+
+        .image-container img:hover {
+            transform: scale(1.05); /* Slight zoom on hover */
+            filter: brightness(1.1) contrast(1.5); /* Brighten and increase contrast on hover */
         }
-        .block-bg-white {
+
+        .block-bg-white,
+        .block-bg-light-gray {
             background-color: #ffffff;
             color: #333;
-            border-radius: 4px;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 6%;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden; /* Prevent SVG overflow */
         }
-        .block-gradient {
-            background: linear-gradient(135deg, #6666ff, #cc66ff);
-            color: white;
-        }
+
         .qr-code {
-            width: 150px;
+            width: 100px;
             height: auto;
+            border-radius: 6px;
+            padding: 5px;
+            background-color: #fff; /* Match with the theme */
+        }
+
+        .abstract-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            z-index: 0; /* Ensure SVGs are behind content */
+            pointer-events: none; /* Prevent interaction with SVGs */
+            object-fit: cover;
+        }
+
+        .content {
+            position: relative; /* Allow content to stack above SVG */
+            z-index: 1; /* Ensure content is above SVGs */
         }
     </style>
 </head>
 
-<body class="text-white">
-    
-    <!-- First Gradient Block (Logo + Intro) -->
-    <div class="block-gradient p-8 w-full flex flex-col items-center">
-        <div class="logo-container mb-6 text-center">
-            <img src="images/logo.png" alt="Khamgaon.online Logo" class="rounded-lg mb-4">
+<body class="text-gray-800">
+    <!-- Intro Block -->
+    <div class="block-bg-light-gray w-full text-center relative">
+        <div class="logo-container mb-6">
+            <img src="images/logo.png" alt="Khamgaon.online Logo" class="rounded-lg mx-auto" >
         </div>
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-center">Khamgaon Online</h1>
-        <h2 class="text-2xl md:text-3xl mb-6 text-center">Connecting Khamgaon like never before!</h2>
+        <h1 class="text-4xl font-light mb-4">Khamgaon Online</h1>
+        <h2 class="text-2xl font-thin">Connecting Khamgaon like never before!</h2>
+        <img src="images/abstract-shape-1.svg" alt="Abstract Shape" class="abstract-bg">
     </div>
 
-    <!-- First White Block (Images + Description) -->
-    <div class="block-bg-white p-6 w-full">
+    <!-- Image Cards Block -->
+    <div class="block-bg-white w-full relative">
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8">
-                <div class="image-container p-4 shadow">
-                    <img src="images/3.png" alt="Khamgaon Image 3" class="rounded-lg">
-                    <p class="text-center mt-2">G S College</p>
+                <div class="image-container shadow">
+                    <img src="images/1.png" alt="Gandhi Bagicha">
+                    <p class="text-center mt-2">Gandhi Bagicha</p>
                 </div>
-                <div class="image-container p-4 shadow">
-                    <img src="images/2.png" alt="Khamgaon Image 2" class="rounded-lg">
-                    <p class="text-center mt-2">Nana Nani Park</p>
+                <div class="image-container shadow">
+                    <img src="images/2.png" alt="Tower Chowk">
+                    <p class="text-center mt-2">Tower Chowk</p>
                 </div>
-                <div class="image-container p-4 shadow">
-                    <img src="images/1.png" alt="Khamgaon Image 1" class="rounded-lg">
-                    <p class="text-center mt-2">Nandura Road</p>
+                <div class="image-container shadow">
+                    <img src="images/3.png" alt="Nagar Parishad">
+                    <p class="text-center mt-2">Nagar Parishad</p>
                 </div>
             </div>
-            <p class="mb-6 text-lg text-center text-gray-700"><b>Khamgaon.online is your one-stop platform for exploring everything Khamgaon has to offer. </b> <br/> From local businesses and professionals to community events, we aim to connect residents and foster community engagement.</p>
+            <h3 class="text-center text-gray-700 text-2xl">Khamgaon.online is your one-stop platform for exploring Khamgaon.</h3>
+            <p class="text-center text-gray-700 font-light text-lg">
+                From local businesses and professionals to community events, we aim to connect residents and foster community engagement.
+            </p>
         </div>
+        <img src="images/abstract-shape-2.svg" alt="Abstract Shape" class="abstract-bg">
     </div>
 
-    <!-- Second Gradient Block (WhatsApp QR Code) -->
-    <div class="block-gradient p-8 w-full text-center">
-        <h3 class="text-xl md:text-2xl font-semibold mb-4">Curious about Khamgaon.online?</h3>
-        <p class="mb-4 text-lg">Scan the QR code to send us a WhatsApp message and be the first to know what’s coming!</p>
-        <div class="mb-8">
-            <img src="images/whatsapp.png" alt="WhatsApp QR Code" class="qr-code mx-auto mb-4">
-        </div>
-        <p class="mb-4 text-lg"><b>WhatsApp Us:</b> +91-7038778801</p>
-        <p class="mb-4 text-lg">We’re launching soon. Stay tuned for the best way to discover local services, events, and businesses.</p>
+    <!-- WhatsApp QR Block -->
+    <div class="block-bg-light-gray text-center w-full relative">
+        <h3 class="text-xl font-normal mb-4">Curious about Khamgaon.online?</h3>
+        <p class="text-lg mb-4 font-light">Scan the QR code to message us on WhatsApp and stay updated!</p>
+        <img src="images/whatsapp.png" alt="WhatsApp QR Code" class="qr-code mx-auto mb-4">
+        <p class="text-lg font-light">WhatsApp Us: +91-7038778801</p>
+        <img src="images/abstract-shape-3.svg" alt="Abstract Shape" class="abstract-bg">
     </div>
 
-    <!-- Second White Block (Social Media Links) -->
-    <div class="block-bg-white p-6 w-full">
-        <div class="max-w-7xl mx-auto text-center">
-            <p class="mb-2">Follow us on social media for updates:</p>
-            <div class="flex justify-center mt-4 space-x-4">
-                <a href="https://www.facebook.com/profile.php?id=61567406970212" class="text-lg hover:text-blue-600">
-                    <i class="fab fa-facebook-square text-blue-600"></i>
-                </a>
-                <a href="https://x.com/khamgaononline" class="text-lg hover:text-blue-400">
-                    <i class="fab fa-twitter-square text-blue-400"></i>
-                </a>
-                <a href="https://www.instagram.com/khamgaon.online" class="text-lg hover:text-pink-500">
-                    <i class="fab fa-instagram-square text-pink-500"></i>
-                </a>
-            </div>
+    <!-- Social Media Block -->
+    <div class="block-bg-white text-center w-full relative">
+        <p class="mb-2">Follow us on social media:</p>
+        <div class="flex justify-center mt-4 space-x-4 content">
+            <a href="https://www.facebook.com/profile.php?id=61567406970212" class="hover:text-blue-600">
+                <i class="fab fa-facebook-square text-blue-600"></i>
+            </a>
+            <a href="https://x.com/khamgaononline" class="hover:text-blue-400">
+                <i class="fab fa-twitter-square text-blue-400"></i>
+            </a>
+            <a href="https://www.instagram.com/khamgaon.online" class="hover:text-pink-500">
+                <i class="fab fa-instagram-square text-pink-500"></i>
+            </a>
         </div>
+        <img src="images/abstract-shape-4.svg" alt="Abstract Shape" class="abstract-bg">
     </div>
-
 </body>
 
 </html>
