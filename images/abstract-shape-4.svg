@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" preserveAspectRatio="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="abstract-svg svg-bottom-right">
     <defs>
-        <linearGradient id="circleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#ff6699;stop-opacity:1" />
-            <stop offset="100%" style="stop-color:#ffcc66;stop-opacity:1" />
+        <linearGradient id="gradient4" gradientTransform="rotate(135)">
+            <stop offset="0%" stop-color="#6666ff" />
+            <stop offset="100%" stop-color="#cc66ff" />
         </linearGradient>
     </defs>
-    <path fill="url(#circleGradient)" d="M400,100 C500,0 600,200 800,100 V200 H0 V100 Z"></path>
+    <ellipse cx="50" cy="50" rx="30" ry="40" fill="url(#gradient4)" />
 </svg>

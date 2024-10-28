@@ -8,28 +8,21 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
     <link rel="icon" href="/images/favicon.png" type="image/x-icon">
 
     <style>
-        body {
-            background-color: #f1f1f1;
-            font-family: 'Inter', sans-serif;
-        }
-
-        h1,
-        h2,
-        h3 {
+        h1, h2, h3 {
             font-family: 'Inter', sans-serif;
             font-weight: 400;
+            color: #222;
         }
 
         .image-container {
             background: #fdfdfd;
             z-index: 1;
             border-radius: 6px;
-            border: 2px solid #ddd; /* Match with the theme */
-            overflow: hidden; /* Prevent overflow from the image */
+            border: 2px solid #ddd;
+            overflow: hidden;
             gap: 8px;
             padding-bottom: 8px;
         }
@@ -40,24 +33,31 @@
             object-fit: cover;
             display: block;
             border-radius: 6px;
-            transition: transform 0.3s, filter 0.3s; /* Add transition for hover effects */
-            filter: contrast(1.2); /* Initial filter settings */
+            transition: transform 0.3s, filter 0.3s;
+            filter: contrast(1.2);
         }
 
         .image-container img:hover {
-            transform: scale(1.05); /* Slight zoom on hover */
-            filter: brightness(1.1) contrast(1.5); /* Brighten and increase contrast on hover */
+            transform: scale(1.05);
+            filter: brightness(1.1) contrast(1.5);
         }
 
-        .block-bg-white,
-        .block-bg-light-gray {
-            background-color: #ffffff;
-            color: #333;
+        .block-bg-white, .block-bg-gray {
             padding: 6%;
             border-radius: 6px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             position: relative;
-            overflow: hidden; /* Prevent SVG overflow */
+            overflow: hidden;
+        }
+
+        .block-bg-white {
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        .block-bg-gray {
+            background: linear-gradient(135deg, #ddddff, #ccccff);
+            color: #333;
         }
 
         .qr-code {
@@ -65,41 +65,68 @@
             height: auto;
             border-radius: 6px;
             padding: 5px;
-            background-color: #fff; /* Match with the theme */
+            background-color: #fff;
         }
 
-        .abstract-bg {
+        .abstract-svg {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.1;
-            z-index: 0; /* Ensure SVGs are behind content */
-            pointer-events: none; /* Prevent interaction with SVGs */
-            object-fit: cover;
+            width: 80px;
+            height: 80px;
+            opacity: 0.6;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .svg-top-left {
+            top: 20px;
+            left: 10px;
+        }
+
+        .svg-bottom-right {
+            bottom: 20px;
+            right: 10px;
+        }
+
+        .svg-top-right {
+            top: 10px;
+            right: 30px;
+        }
+
+        .svg-bottom-left {
+            bottom: 10px;
+            left: 20px;
         }
 
         .content {
-            position: relative; /* Allow content to stack above SVG */
-            z-index: 1; /* Ensure content is above SVGs */
+            position: relative;
+            z-index: 1;
         }
     </style>
 </head>
 
 <body class="text-gray-800">
     <!-- Intro Block -->
-    <div class="block-bg-light-gray w-full text-center relative">
+    <div class="block-bg-white w-full text-center relative">
         <div class="logo-container mb-6">
-            <img src="images/logo.png" alt="Khamgaon.online Logo" class="rounded-lg mx-auto" >
+            <img src="images/logo.png" alt="Khamgaon.online Logo" class="rounded-lg mx-auto">
         </div>
         <h1 class="text-4xl font-light mb-4">Khamgaon Online</h1>
         <h2 class="text-2xl font-thin">Connecting Khamgaon like never before!</h2>
-        <img src="images/abstract-shape-1.svg" alt="Abstract Shape" class="abstract-bg">
+
+        <!-- Top Left SVG with Purple to Pink Gradient -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="abstract-svg svg-top-left">
+            <defs>
+                <linearGradient id="gradient1" gradientTransform="rotate(135)">
+                    <stop offset="0%" stop-color="#cc66ff" />
+                    <stop offset="100%" stop-color="#6666ff" />
+                </linearGradient>
+            </defs>
+            <circle cx="50" cy="50" r="40" fill="url(#gradient1)" />
+        </svg>
     </div>
 
     <!-- Image Cards Block -->
-    <div class="block-bg-white w-full relative">
+    <div class="block-bg-gray w-full relative">
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8">
                 <div class="image-container shadow">
@@ -120,20 +147,40 @@
                 From local businesses and professionals to community events, we aim to connect residents and foster community engagement.
             </p>
         </div>
-        <img src="images/abstract-shape-2.svg" alt="Abstract Shape" class="abstract-bg">
+
+        <!-- Top Right SVG with Blue to Cyan Gradient -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="abstract-svg svg-top-right">
+            <defs>
+                <linearGradient id="gradient2" gradientTransform="rotate(45)">
+                    <stop offset="0%" stop-color="#48cae4" />
+                    <stop offset="100%" stop-color="#00b4d8" />
+                </linearGradient>
+            </defs>
+            <rect x="10" y="10" width="80" height="80" fill="url(#gradient2)" />
+        </svg>
     </div>
 
     <!-- WhatsApp QR Block -->
-    <div class="block-bg-light-gray text-center w-full relative">
+    <div class="block-bg-white text-center w-full relative">
         <h3 class="text-xl font-normal mb-4">Curious about Khamgaon.online?</h3>
         <p class="text-lg mb-4 font-light">Scan the QR code to message us on WhatsApp and stay updated!</p>
         <img src="images/whatsapp.png" alt="WhatsApp QR Code" class="qr-code mx-auto mb-4">
         <p class="text-lg font-light">WhatsApp Us: +91-7038778801</p>
-        <img src="images/abstract-shape-3.svg" alt="Abstract Shape" class="abstract-bg">
+
+        <!-- Bottom Left SVG with Orange to Yellow Gradient -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="abstract-svg svg-bottom-left">
+            <defs>
+                <linearGradient id="gradient3" gradientTransform="rotate(135)">
+                    <stop offset="0%" stop-color="#ff9f43" />
+                    <stop offset="100%" stop-color="#ff6f00" />
+                </linearGradient>
+            </defs>
+            <polygon points="50,10 90,90 10,90" fill="url(#gradient3)" />
+        </svg>
     </div>
 
     <!-- Social Media Block -->
-    <div class="block-bg-white text-center w-full relative">
+    <div class="block-bg-gray text-center w-full relative">
         <p class="mb-2">Follow us on social media:</p>
         <div class="flex justify-center mt-4 space-x-4 content">
             <a href="https://www.facebook.com/profile.php?id=61567406970212" class="hover:text-blue-600">
@@ -146,7 +193,17 @@
                 <i class="fab fa-instagram-square text-pink-500"></i>
             </a>
         </div>
-        <img src="images/abstract-shape-4.svg" alt="Abstract Shape" class="abstract-bg">
+
+        <!-- Bottom Right SVG with Green to Teal Gradient -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="abstract-svg svg-bottom-right">
+            <defs>
+                <linearGradient id="gradient4" gradientTransform="rotate(45)">
+                    <stop offset="0%" stop-color="#80ffdb" />
+                    <stop offset="100%" stop-color="#64dfdf" />
+                </linearGradient>
+            </defs>
+            <ellipse cx="50" cy="50" rx="40" ry="30" fill="url(#gradient4)" />
+        </svg>
     </div>
 </body>
 
