@@ -58,14 +58,6 @@ h3 {
     margin-top: 1rem;
 }
 
-/* Icon Gradients */
-.icon-gradient-1 { background: linear-gradient(90deg, #FF6A00, #EE0979); }
-.icon-gradient-2 { background: linear-gradient(90deg, #6A00FF, #F000FF); }
-.icon-gradient-3 { background: linear-gradient(90deg, #00BFFF, #1E90FF); }
-.icon-gradient-4 { background: linear-gradient(90deg, #32CD32, #228B22); }
-.icon-gradient-5 { background: linear-gradient(90deg, #FFD700, #FFA500); }
-.icon-gradient-6 { background: linear-gradient(90deg, #FF4500, #FF6347); }
-
 /* Card Text */
 .image-container p {
     font-size: 0.9rem;
@@ -92,8 +84,7 @@ h3 {
 }
 
 .block-bg-gray {
-    background-color: #f1f3f6;
-    color: #333;
+    background: linear-gradient(135deg, #666fff80, #cc66ff40);
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.03);
 }
 
@@ -166,14 +157,6 @@ h3 {
     overflow: hidden;
 }
 
-/* Category Icons Gradients */
-.gradient-icon-1 { background: linear-gradient(90deg, #FF6A00, #EE0979); }
-.gradient-icon-2 { background: linear-gradient(90deg, #6A00FF, #F000FF); }
-.gradient-icon-3 { background: linear-gradient(90deg, #00BFFF, #1E90FF); }
-.gradient-icon-4 { background: linear-gradient(90deg, #32CD32, #228B22); }
-.gradient-icon-5 { background: linear-gradient(90deg, #FFD700, #FFA500); }
-.gradient-icon-6 { background: linear-gradient(90deg, #FF4500, #FF6347); }
-
 
 .coming-soon-banner {
     position: fixed;
@@ -192,4 +175,54 @@ h3 {
 
 a {
     color: #0000ff;
+}
+
+
+/* Global Settings */
+body {
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styles */
+h1, h2, h3 {
+    font-weight: 400;
+    color: #222;
+}
+
+/* Image Container */
+.image-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    overflow: hidden;
+    padding-bottom: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.image-container:hover {
+    background: rgba(245, 245, 245, 0.95);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Icon Gradients */
+.icon-gradient-1, .gradient-icon-1 { background: linear-gradient(90deg, #FF6A00, #EE0979); }
+.icon-gradient-2, .gradient-icon-2 { background: linear-gradient(90deg, #6A00FF, #F000FF); }
+.icon-gradient-3, .gradient-icon-3 { background: linear-gradient(90deg, #00BFFF, #1E90FF); }
+.icon-gradient-4, .gradient-icon-4 { background: linear-gradient(90deg, #32CD32, #228B22); }
+.icon-gradient-5, .gradient-icon-5 { background: linear-gradient(90deg, #FFD700, #FFA500); }
+.icon-gradient-6, .gradient-icon-6 { background: linear-gradient(90deg, #FF4500, #FF6347); }
+
+
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+    .abstract-svg {
+        width: 70px; /* Scale SVGs for smaller screens */
+    }
+    .coming-soon-banner {
+        font-size: 0.9rem;
+    }
 }
