@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="abstract-svg svg-bottom-right">
-    <defs>
-        <linearGradient id="gradient4" gradientTransform="rotate(135)">
-            <stop offset="0%" stop-color="#6666ff" />
-            <stop offset="100%" stop-color="#cc66ff" />
-        </linearGradient>
-    </defs>
-    <ellipse cx="50" cy="50" rx="30" ry="40" fill="url(#gradient4)" />
-</svg>

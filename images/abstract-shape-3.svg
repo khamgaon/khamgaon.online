@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="abstract-svg svg-bottom-left">
-    <defs>
-        <linearGradient id="gradient3" gradientTransform="rotate(135)">
-            <stop offset="0%" stop-color="#6666ff" />
-            <stop offset="100%" stop-color="#cc66ff" />
-        </linearGradient>
-    </defs>
-    <rect x="20" y="20" width="60" height="60" rx="10" ry="10" fill="url(#gradient3)" />
-</svg>

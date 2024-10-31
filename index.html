@@ -8,103 +8,17 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="style.css"> <!-- Ensure your CSS file is correctly linked -->
     <link rel="icon" href="/images/favicon.png" type="image/x-icon">
-
-    <style>
-        h1, h2, h3 {
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            color: #222;
-        }
-
-        .image-container {
-            background: #fdfdfd;
-            z-index: 1;
-            border-radius: 6px;
-            border: 2px solid #ddd;
-            overflow: hidden;
-            gap: 8px;
-            padding-bottom: 8px;
-        }
-
-        .image-container img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-            border-radius: 6px;
-            transition: transform 0.3s, filter 0.3s;
-            filter: contrast(1.2);
-        }
-
-        .image-container img:hover {
-            transform: scale(1.05);
-            filter: brightness(1.1) contrast(1.5);
-        }
-
-        .block-bg-white, .block-bg-gray {
-            padding: 6%;
-            border-radius: 6px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .block-bg-white {
-            background-color: #ffffff;
-            color: #333;
-        }
-
-        .block-bg-gray {
-            background: linear-gradient(135deg, #ddddff, #ccccff);
-            color: #333;
-        }
-
-        .qr-code {
-            width: 100px;
-            height: auto;
-            border-radius: 6px;
-            padding: 5px;
-            background-color: #fff;
-        }
-
-        .abstract-svg {
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            opacity: 0.6;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .svg-top-left {
-            top: 20px;
-            left: 10px;
-        }
-
-        .svg-bottom-right {
-            bottom: 20px;
-            right: 10px;
-        }
-
-        .svg-top-right {
-            top: 10px;
-            right: 30px;
-        }
-
-        .svg-bottom-left {
-            bottom: 10px;
-            left: 20px;
-        }
-
-        .content {
-            position: relative;
-            z-index: 1;
-        }
-    </style>
 </head>
 
 <body class="text-gray-800">
+    <!-- Coming Soon Banner -->
+    <div class="coming-soon-banner">
+        <span>Coming Soon!</span>
+    </div>
+    
     <!-- Intro Block -->
     <div class="block-bg-white w-full text-center relative">
         <div class="logo-container mb-6">
@@ -112,75 +26,186 @@
         </div>
         <h1 class="text-4xl font-light mb-4">Khamgaon Online</h1>
         <h2 class="text-2xl font-thin">Connecting Khamgaon like never before!</h2>
-
-        <!-- Top Left SVG with Purple to Pink Gradient -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="abstract-svg svg-top-left">
-            <defs>
-                <linearGradient id="gradient1" gradientTransform="rotate(135)">
-                    <stop offset="0%" stop-color="#cc66ff" />
-                    <stop offset="100%" stop-color="#6666ff" />
-                </linearGradient>
-            </defs>
-            <circle cx="50" cy="50" r="40" fill="url(#gradient1)" />
-        </svg>
+        
+        <!-- SVG Top Left -->
+        <img src="svgs/svg-top-left.svg" class="abstract-svg svg-top-left" alt="Abstract Design">
     </div>
 
-    <!-- Image Cards Block -->
+    <!-- Features Block -->
     <div class="block-bg-gray w-full relative">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8">
-                <div class="image-container shadow">
-                    <img src="images/1.png" alt="Gandhi Bagicha">
-                    <p class="text-center mt-2">Gandhi Bagicha</p>
-                </div>
-                <div class="image-container shadow">
-                    <img src="images/2.png" alt="Tower Chowk">
-                    <p class="text-center mt-2">Tower Chowk</p>
-                </div>
-                <div class="image-container shadow">
-                    <img src="images/3.png" alt="Nagar Parishad">
-                    <p class="text-center mt-2">Nagar Parishad</p>
-                </div>
-            </div>
-            <h3 class="text-center text-gray-700 text-2xl">Khamgaon.online is your one-stop platform for exploring Khamgaon.</h3>
+        <div class="my-8">
+            <h3 class="text-center text-gray-700 text-2xl mb-2">Your one-stop platform for exploring Khamgaon.</h3>
             <p class="text-center text-gray-700 font-light text-lg">
                 From local businesses and professionals to community events, we aim to connect residents and foster community engagement.
-            </p>
+            </p> 
+        </div>   
+
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8">
+                <div class="image-container shadow text-center">
+                    <i class="material-icons text-5xl mx-auto mt-4 icon-gradient-1">people</i>
+                    <h4 class="font-semibold text-lg mt-2">Community Engagement</h4>
+                    <p class="text-gray-600" style="padding: 10px;">Join discussions, share insights, and connect with fellow Khamgaon residents.</p>
+                </div>
+                <div class="image-container shadow text-center">
+                    <i class="material-icons text-5xl mx-auto mt-4 icon-gradient-2">business</i>
+                    <h4 class="font-semibold text-lg mt-2">Local Business Directory</h4>
+                    <p class="text-gray-600" style="padding: 10px;">Explore and support local businesses and professionals in Khamgaon.</p>
+                </div>
+                <div class="image-container shadow text-center">
+                    <i class="material-icons text-5xl mx-auto mt-4 icon-gradient-3">event</i>
+                    <h4 class="font-semibold text-lg mt-2">Events and Announcements</h4>
+                    <p class="text-gray-600" style="padding: 10px;">Stay updated with upcoming events and announcements in your community.</p>
+                </div>
+                <div class="image-container shadow text-center">
+                    <i class="material-icons text-5xl mx-auto mt-4 icon-gradient-4">chat</i>
+                    <h4 class="font-semibold text-lg mt-2">One-on-One Chat</h4>
+                    <p class="text-gray-600" style="padding: 10px;">Connect directly with local professionals and businesses.</p>
+                </div>
+                <div class="image-container shadow text-center">
+                    <i class="material-icons text-5xl mx-auto mt-4 icon-gradient-5">star</i>
+                    <h4 class="font-semibold text-lg mt-2">Reviews and Ratings</h4>
+                    <p class="text-gray-600" style="padding: 10px;">Read and leave reviews for local services and businesses.</p>
+                </div>
+                <div class="image-container shadow text-center">
+                    <i class="material-icons text-5xl mx-auto mt-4 icon-gradient-6">shopping_cart</i>
+                    <h4 class="font-semibold text-lg mt-2">Order Products Online</h4>
+                    <p class="text-gray-600" style="padding: 10px;">Order products and services directly from local vendors.</p>
+                </div>
+            </div>
+        </div>
+        <!-- SVG Top Right -->
+        <img src="svgs/svg-top-right.svg" class="abstract-svg svg-top-right" alt="Abstract Design">
+    </div>
+<!-- Explore Khamgaon Section -->
+<div class="block-bg-white w-full relative py-8">
+    <div class="max-w-7xl mx-auto">
+        <h3 class="text-center text-gray-700 text-2xl mb-2">Explore Categories on Khamgaon.online</h3>
+        <p class="text-center text-gray-700 font-light text-lg mb-8">Uncover the rich array of services, businesses, and iconic landmarks that Khamgaon has to offer.</p>
+
+
+        <!-- Category Section -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 mb-8">
+            <div class="text-center">
+                <div class="rounded-full w-12 h-12 flex items-center justify-center mx-auto gradient-icon-1">
+                    <i class="material-icons text-white">local_hospital</i>
+                </div>
+                <p class="mt-2">Hospitals</p>
+            </div>
+
+            <div class="text-center">
+                <div class="rounded-full w-12 h-12 flex items-center justify-center mx-auto gradient-icon-3">
+                    <i class="material-icons text-white">restaurant</i>
+                </div>
+                <p class="mt-2">Restaurants</p>
+            </div>
+
+            <div class="text-center">
+                <div class="rounded-full w-12 h-12 flex items-center justify-center mx-auto gradient-icon-5">
+                    <i class="material-icons text-white">school</i>
+                </div>
+                <p class="mt-2">Schools</p>
+            </div>
+            <div class="text-center">
+                <div class="rounded-full w-12 h-12 flex items-center justify-center mx-auto gradient-icon-2">
+                    <i class="material-icons text-white">park</i>
+                </div>
+                <p class="mt-2">Parks</p>
+            </div>
+
+            <div class="text-center">
+                <div class="rounded-full w-12 h-12 flex items-center justify-center mx-auto gradient-icon-6">
+                    <i class="material-icons text-white">shopping_cart</i>
+                </div>
+                <p class="mt-2">Shops</p>
+            </div>
+            <div class="text-center">
+                <div class="rounded-full w-12 h-12 flex items-center justify-center mx-auto gradient-icon-4">
+                    <i class="material-icons text-white">store</i>
+                </div>
+                <p class="mt-2">Stores</p>
+            </div>
+
+            <div class="text-center">
+                <div class="rounded-full w-12 h-12 flex items-center justify-center mx-auto gradient-icon-2">
+                    <i class="material-icons text-white">hotel</i>
+                </div>
+                <p class="mt-2">Hotels</p>
+            </div>
+            <div class="text-center">
+                <div class="rounded-full w-12 h-12 flex items-center justify-center mx-auto gradient-icon-1">
+                    <i class="material-icons text-white">fitness_center</i>
+                </div>
+                <p class="mt-2">Gyms</p>
+            </div>
+            <div class="text-center">
+                <div class="rounded-full w-12 h-12 flex items-center justify-center mx-auto gradient-icon-3">
+                    <i class="material-icons text-white">content_cut</i>
+                </div>
+                <p class="mt-2">Beauty Salons</p>
+            </div>
+            <div class="text-center">
+                <div class="rounded-full w-12 h-12 flex items-center justify-center mx-auto gradient-icon-4">
+                    <i class="material-icons text-white">local_pharmacy</i>
+                </div>
+                <p class="mt-2">Pharmacies</p>
+            </div>
+            <div class="text-center">
+                <div class="rounded-full w-12 h-12 flex items-center justify-center mx-auto gradient-icon-5">
+                    <i class="material-icons text-white">pets</i>
+                </div>
+                <p class="mt-2">Pet Services</p>
+            </div>
+            <div class="text-center">
+                <div class="rounded-full w-12 h-12 flex items-center justify-center mx-auto gradient-icon-6">
+                    <i class="material-icons text-white">home_repair_service</i>
+                </div>
+                <p class="mt-2">Home Services</p>
+            </div>
         </div>
 
-        <!-- Top Right SVG with Blue to Cyan Gradient -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="abstract-svg svg-top-right">
-            <defs>
-                <linearGradient id="gradient2" gradientTransform="rotate(45)">
-                    <stop offset="0%" stop-color="#48cae4" />
-                    <stop offset="100%" stop-color="#00b4d8" />
-                </linearGradient>
-            </defs>
-            <rect x="10" y="10" width="80" height="80" fill="url(#gradient2)" />
-        </svg>
     </div>
+</div>
+
+
 
     <!-- WhatsApp QR Block -->
-    <div class="block-bg-white text-center w-full relative">
+    <div class="block-bg-gray text-center w-full relative">
         <h3 class="text-xl font-normal mb-4">Curious about Khamgaon.online?</h3>
         <p class="text-lg mb-4 font-light">Scan the QR code to message us on WhatsApp and stay updated!</p>
         <img src="images/whatsapp.png" alt="WhatsApp QR Code" class="qr-code mx-auto mb-4">
-        <p class="text-lg font-light">WhatsApp Us: +91-7038778801</p>
-
-        <!-- Bottom Left SVG with Orange to Yellow Gradient -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="abstract-svg svg-bottom-left">
-            <defs>
-                <linearGradient id="gradient3" gradientTransform="rotate(135)">
-                    <stop offset="0%" stop-color="#ff9f43" />
-                    <stop offset="100%" stop-color="#ff6f00" />
-                </linearGradient>
-            </defs>
-            <polygon points="50,10 90,90 10,90" fill="url(#gradient3)" />
-        </svg>
+        <a href="https://wa.me/message/XAHXJJJMHUKLD1" target="_blank" class="text-lg font-light">WhatsApp Us: +91-7038778801</a>
+        <img src="svgs/svg-bottom-left.svg" class="abstract-svg svg-bottom-left" alt="Abstract Design">
     </div>
 
     <!-- Social Media Block -->
-    <div class="block-bg-gray text-center w-full relative">
+    <div class="block-bg-white text-center w-full relative">
+
+                <!-- Image Cards Block -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8">
+                    <div class="image-container shadow hover:shadow-lg transition-transform transform hover:scale-105">
+                        <img src="images/1.png" alt="Gandhi Bagicha" class="w-full h-40 object-cover rounded-lg">
+                        <div class="p-4 text-center">
+                            <h4 class="font-semibold text-lg">Gandhi Bagicha</h4>
+                            <p class="text-gray-600">A beautiful garden in the heart of Khamgaon.</p>
+                        </div>
+                    </div>
+                    <div class="image-container shadow hover:shadow-lg transition-transform transform hover:scale-105">
+                        <img src="images/2.png" alt="Tower Chowk" class="w-full h-40 object-cover rounded-lg">
+                        <div class="p-4 text-center">
+                            <h4 class="font-semibold text-lg">Tower Chowk</h4>
+                            <p class="text-gray-600">A bustling area known for its shops and eateries.</p>
+                        </div>
+                    </div>
+                    <div class="image-container shadow hover:shadow-lg transition-transform transform hover:scale-105">
+                        <img src="images/3.png" alt="Nagar Parishad" class="w-full h-40 object-cover rounded-lg">
+                        <div class="p-4 text-center">
+                            <h4 class="font-semibold text-lg">Nagar Parishad</h4>
+                            <p class="text-gray-600">The local municipal office, a hub of community activity.</p>
+                        </div>
+                    </div>
+                </div>
+        
         <p class="mb-2">Follow us on social media:</p>
         <div class="flex justify-center mt-4 space-x-4 content">
             <a href="https://www.facebook.com/profile.php?id=61567406970212" class="hover:text-blue-600">
@@ -193,17 +218,8 @@
                 <i class="fab fa-instagram-square text-pink-500"></i>
             </a>
         </div>
-
-        <!-- Bottom Right SVG with Green to Teal Gradient -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="abstract-svg svg-bottom-right">
-            <defs>
-                <linearGradient id="gradient4" gradientTransform="rotate(45)">
-                    <stop offset="0%" stop-color="#80ffdb" />
-                    <stop offset="100%" stop-color="#64dfdf" />
-                </linearGradient>
-            </defs>
-            <ellipse cx="50" cy="50" rx="40" ry="30" fill="url(#gradient4)" />
-        </svg>
+        
+        <img src="svgs/svg-bottom-right.svg" class="abstract-svg svg-bottom-right" alt="Abstract Design">
     </div>
 </body>
 
