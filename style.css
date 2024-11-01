@@ -162,7 +162,7 @@ h3 {
     position: fixed;
     text-align: center;
     margin-left: -32px;
-    top: 28px;
+    top: 26px;
     z-index: 10;
     transform: rotate(-45deg);
     background: linear-gradient(135deg, #666fff, #cc66ff);
