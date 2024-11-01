@@ -160,17 +160,15 @@ h3 {
 
 .coming-soon-banner {
     position: fixed;
-    margin-top: 100px;
+    text-align: center;
     margin-left: -32px;
-    z-index: 1000;
-    background: linear-gradient(135deg, #FF6A00, #EE0979);
-    color: white;
-    padding: 4px 40px;
-    font-size: 1rem;
+    top: 28px;
+    z-index: 10;
     transform: rotate(-45deg);
-    transform-origin: top left;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    left: 0px;
+    background: linear-gradient(135deg, #666fff, #cc66ff);
+    color: white;
+    padding: 4px 20px;
+    font-size: 1rem;
 }
 
 a {
