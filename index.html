@@ -24,7 +24,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" href="/images/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
 
     <!-- Add more meta tags -->
     <meta name="keywords" content="Khamgaon, online directory, local business, community events, Maharashtra">
@@ -74,31 +73,17 @@
     <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="/images/logo.png" as="image">
     
-    <!-- Remove duplicate resource loading -->
-    <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
     
-    <!-- Add cookie consent before GA4 -->
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GHVRHGY6B6"></script>
     <script>
-        function initGA() {
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            
-            gtag('config', 'G-GHVRHGY6B6', {
-                'send_page_view': true,
-                'anonymize_ip': true,
-                'cookie_flags': 'SameSite=None;Secure'
-            });
-        }
-
-        // Only load GA after consent
-        if (localStorage.getItem('cookieConsent') === 'true') {
-            const gaScript = document.createElement('script');
-            gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-GHVRHGY6B6';
-            gaScript.async = true;
-            document.head.appendChild(gaScript);
-            gaScript.onload = initGA;
-        }
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        
+        gtag('config', 'G-GHVRHGY6B6', {
+            'send_page_view': true,
+        });
     </script>
 </head>
 
