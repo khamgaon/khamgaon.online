@@ -161,13 +161,11 @@ h3 {
 .coming-soon-banner {
     position: fixed;
     text-align: center;
-    margin-left: -32px;
-    top: 26px;
     z-index: 10;
-    transform: rotate(-45deg);
+    transform: rotate(-45deg) translateX(-28%);
     background: linear-gradient(135deg, #666fff, #cc66ff);
     color: white;
-    padding: 4px 20px;
+    padding: 4px 40px;
     font-size: 1rem;
 }
 
@@ -222,5 +220,49 @@ h1, h2, h3 {
     }
     .coming-soon-banner {
         font-size: 0.9rem;
+    }
+}
+
+/* Add smooth transitions */
+.image-container {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Add hover effects */
+.image-container:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Add loading skeleton animation */
+@keyframes shimmer {
+    0% { background-position: -468px 0 }
+    100% { background-position: 468px 0 }
+}
+
+.skeleton {
+    background: linear-gradient(to right, #f6f7f8 8%, #edeef1 18%, #f6f7f8 33%);
+    background-size: 800px 104px;
+    animation: shimmer 1.5s linear infinite;
+}
+
+/* Better mobile experience */
+@media (max-width: 768px) {
+    .block-bg-white,
+    .block-bg-gray {
+        padding: 2rem 1rem;
+    }
+
+    h1 { font-size: 1.875rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.25rem; }
+
+    .grid {
+        gap: 1rem;
+    }
+
+    .coming-soon-banner {
+        font-size: 0.875rem;
+        padding: 2px 16px;
     }
 }

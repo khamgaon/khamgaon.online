@@ -25,18 +25,46 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" href="/images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
+
+    <!-- Add more meta tags -->
+    <meta name="keywords" content="Khamgaon, online directory, local business, community events, Maharashtra">
+    <meta name="author" content="Khamgaon.online">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://khamgaon.online">
+
+    <!-- Add preconnect for external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Add structured data for local business -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Khamgaon.online",
+      "description": "Online directory for Khamgaon businesses and community",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Khamgaon",
+        "addressRegion": "Maharashtra",
+        "addressCountry": "IN"
+      }
+    }
+    </script>
 </head>
 
 <body class="text-gray-800">
     <!-- Coming Soon Banner -->
-    <section class="coming-soon-banner">
+    <section class="coming-soon-banner" role="banner" aria-label="Coming Soon Announcement">
         <span>Coming Soon!</span>
     </section>
 
     <!-- Intro Section -->
     <header class="block-bg-white w-full text-center relative">
         <div class="logo-container mb-6">
-            <img src="images/logo.png" alt="Khamgaon.online Logo" class="rounded-lg mx-auto" loading="lazy">
+            <img src="images/logo.png" alt="Khamgaon.online Logo" width="200" height="200" class="rounded-lg mx-auto" loading="lazy">
         </div>
         <h1 class="text-4xl font-light mb-4">Khamgaon Online</h1>
         <h2 class="text-2xl font-thin">Connecting Khamgaon like never before!</h2>
@@ -44,7 +72,7 @@
     </header>
 
     <!-- Features Section -->
-    <section class="block-bg-gray w-full relative">
+    <section class="block-bg-gray w-full relative" role="region" aria-label="Key Features">
         <div class="my-8">
             <h3 class="text-center text-gray-700 text-2xl mb-2">Khamgaon Online is your one-stop platform for exploring Khamgaon.</h3>
             <p class="text-center text-gray-700 font-light text-lg">From local businesses and professionals to community events, we aim to connect residents and foster community engagement.</p>
@@ -52,37 +80,64 @@
 
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8">
-                <!-- Repeatable feature card structure -->
-                <article class="image-container shadow text-center">
-                    <i class="material-icons text-5xl mx-auto mt-4 icon-gradient-1" aria-hidden="true">people</i>
-                    <h4 class="font-semibold text-lg mt-2">Community Engagement</h4>
-                    <p class="text-gray-600 p-2">Join discussions, share insights, and connect with fellow Khamgaon residents.</p>
+                <article class="image-container shadow text-center transform hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+                    <div class="p-6">
+                        <div class="rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 gradient-icon-1">
+                            <span class="material-icons text-white text-2xl">people</span>
+                        </div>
+                        <h4 class="font-semibold text-lg mb-3">Community Engagement</h4>
+                        <p class="text-gray-600">Join discussions, share insights, and connect with fellow Khamgaon residents.</p>
+                    </div>
                 </article>
 
-                <article class="image-container shadow text-center">
-                    <i class="material-icons text-5xl mx-auto mt-4 icon-gradient-2">business</i>
-                    <h4 class="font-semibold text-lg mt-2">Local Business Directory</h4>
-                    <p class="text-gray-600 p-2">Explore and support local businesses and professionals in Khamgaon.</p>
+                <article class="image-container shadow text-center transform hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+                    <div class="p-6">
+                        <div class="rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 gradient-icon-2">
+                            <span class="material-icons text-white text-2xl">business</span>
+                        </div>
+                        <h4 class="font-semibold text-lg mb-3">Local Business Directory</h4>
+                        <p class="text-gray-600">Explore and support local businesses and professionals in Khamgaon.</p>
+                    </div>
                 </article>
-                <article class="image-container shadow text-center">
-                    <i class="material-icons text-5xl mx-auto mt-4 icon-gradient-3">event</i>
-                    <h4 class="font-semibold text-lg mt-2">Events and Announcements</h4>
-                    <p class="text-gray-600 p-2">Stay updated with upcoming events and announcements in your community.</p>
+
+                <article class="image-container shadow text-center transform hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+                    <div class="p-6">
+                        <div class="rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 gradient-icon-3">
+                            <span class="material-icons text-white text-2xl">event</span>
+                        </div>
+                        <h4 class="font-semibold text-lg mb-3">Events and Announcements</h4>
+                        <p class="text-gray-600">Stay updated with upcoming events and announcements in your community.</p>
+                    </div>
                 </article>
-                <article class="image-container shadow text-center">
-                    <i class="material-icons text-5xl mx-auto mt-4 icon-gradient-4">chat</i>
-                    <h4 class="font-semibold text-lg mt-2">One-on-One Chat</h4>
-                    <p class="text-gray-600 p-2">Connect directly with local professionals and businesses.</p>
+
+                <article class="image-container shadow text-center transform hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+                    <div class="p-6">
+                        <div class="rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 gradient-icon-4">
+                            <span class="material-icons text-white text-2xl">chat</span>
+                        </div>
+                        <h4 class="font-semibold text-lg mb-3">One-on-One Chat</h4>
+                        <p class="text-gray-600">Connect directly with local professionals and businesses.</p>
+                    </div>
                 </article>
-                <article class="image-container shadow text-center">
-                    <i class="material-icons text-5xl mx-auto mt-4 icon-gradient-5">star</i>
-                    <h4 class="font-semibold text-lg mt-2">Reviews and Ratings</h4>
-                    <p class="text-gray-600 p-2">Read and leave reviews for local services and businesses.</p>
+
+                <article class="image-container shadow text-center transform hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+                    <div class="p-6">
+                        <div class="rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 gradient-icon-5">
+                            <span class="material-icons text-white text-2xl">star</span>
+                        </div>
+                        <h4 class="font-semibold text-lg mb-3">Reviews and Ratings</h4>
+                        <p class="text-gray-600">Read and leave reviews for local services and businesses.</p>
+                    </div>
                 </article>
-                <article class="image-container shadow text-center">
-                    <i class="material-icons text-5xl mx-auto mt-4 icon-gradient-6">shopping_cart</i>
-                    <h4 class="font-semibold text-lg mt-2">Order Products Online</h4>
-                    <p class="text-gray-600 p-2">Order products and services directly from local vendors.</p>
+
+                <article class="image-container shadow text-center transform hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+                    <div class="p-6">
+                        <div class="rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 gradient-icon-6">
+                            <span class="material-icons text-white text-2xl">shopping_cart</span>
+                        </div>
+                        <h4 class="font-semibold text-lg mb-3">Order Products Online</h4>
+                        <p class="text-gray-600">Order products and services directly from local vendors.</p>
+                    </div>
                 </article>
             </div>
         </div>
@@ -97,84 +152,149 @@
 
             <!-- Category Section -->
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 mb-8">
-                <div class="text-center">
-                    <div class="rounded-full w-12 h-12 flex items-center justify-center mx-auto gradient-icon-1">
-                        <i class="material-icons text-white" aria-hidden="true">local_hospital</i>
+                <div class="group relative cursor-pointer">
+                    <div class="text-center p-4 rounded-lg bg-white hover:bg-gray-50 transition-all duration-300">
+                        <div class="relative">
+                            <div class="rounded-full w-16 h-16 flex items-center justify-center mx-auto gradient-icon-1 group-hover:scale-110 transition-transform">
+                                <span class="material-icons text-white">local_hospital</span>
+                            </div>
+                            <!-- <span class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full whitespace-nowrap">Coming Soon</span> -->
+                        </div>
+                        <p class="mt-2 font-medium group-hover:text-blue-600">Hospitals</p>
                     </div>
-                    <p class="mt-2">Hospitals</p>
                 </div>
 
-
-                <div class="text-center">
-                    <div class="rounded-full w-12 h-12 flex items-center justify-center mx-auto gradient-icon-3">
-                        <i class="material-icons text-white" aria-hidden="true">restaurant</i>
+                <div class="group relative cursor-pointer">
+                    <div class="text-center p-4 rounded-lg bg-white hover:bg-gray-50 transition-all duration-300">
+                        <div class="relative">
+                            <div class="rounded-full w-16 h-16 flex items-center justify-center mx-auto gradient-icon-3 group-hover:scale-110 transition-transform">
+                                <span class="material-icons text-white">restaurant</span>
+                            </div>
+                            <!-- <span class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full whitespace-nowrap">Coming Soon</span> -->
+                        </div>
+                        <p class="mt-2 font-medium group-hover:text-blue-600">Restaurants</p>
                     </div>
-                    <p class="mt-2">Restaurants</p>
                 </div>
 
-                <div class="text-center">
-                    <div class="rounded-full w-12 h-12 flex items-center justify-center mx-auto gradient-icon-5">
-                        <i class="material-icons text-white" aria-hidden="true">school</i>
+                <div class="group relative cursor-pointer">
+                    <div class="text-center p-4 rounded-lg bg-white hover:bg-gray-50 transition-all duration-300">
+                        <div class="relative">
+                            <div class="rounded-full w-16 h-16 flex items-center justify-center mx-auto gradient-icon-5 group-hover:scale-110 transition-transform">
+                                <span class="material-icons text-white">school</span>
+                            </div>
+                            <!-- <span class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full whitespace-nowrap">Coming Soon</span> -->
+                        </div>
+                        <p class="mt-2 font-medium group-hover:text-blue-600">Schools</p>
                     </div>
-                    <p class="mt-2">Schools</p>
-                </div>
-                <div class="text-center">
-                    <div class="rounded-full w-12 h-12 flex items-center justify-center mx-auto gradient-icon-2">
-                        <i class="material-icons text-white" aria-hidden="true">park</i>
-                    </div>
-                    <p class="mt-2">Parks</p>
-                </div>
-
-                <div class="text-center">
-                    <div class="rounded-full w-12 h-12 flex items-center justify-center mx-auto gradient-icon-6">
-                        <i class="material-icons text-white" aria-hidden="true">shopping_cart</i>
-                    </div>
-                    <p class="mt-2">Shops</p>
-                </div>
-                <div class="text-center">
-                    <div class="rounded-full w-12 h-12 flex items-center justify-center mx-auto gradient-icon-4">
-                        <i class="material-icons text-white" aria-hidden="true">store</i>
-                    </div>
-                    <p class="mt-2">Stores</p>
                 </div>
 
-                <div class="text-center">
-                    <div class="rounded-full w-12 h-12 flex items-center justify-center mx-auto gradient-icon-2">
-                        <i class="material-icons text-white" aria-hidden="true">hotel</i>
+                <div class="group relative cursor-pointer">
+                    <div class="text-center p-4 rounded-lg bg-white hover:bg-gray-50 transition-all duration-300">
+                        <div class="relative">
+                            <div class="rounded-full w-16 h-16 flex items-center justify-center mx-auto gradient-icon-2 group-hover:scale-110 transition-transform">
+                                <span class="material-icons text-white">park</span>
+                            </div>
+                            <!-- <span class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full whitespace-nowrap">Coming Soon</span> -->
+                        </div>
+                        <p class="mt-2 font-medium group-hover:text-blue-600">Parks</p>
                     </div>
-                    <p class="mt-2">Hotels</p>
                 </div>
-                <div class="text-center">
-                    <div class="rounded-full w-12 h-12 flex items-center justify-center mx-auto gradient-icon-1">
-                        <i class="material-icons text-white" aria-hidden="true">fitness_center</i>
+
+                <div class="group relative cursor-pointer">
+                    <div class="text-center p-4 rounded-lg bg-white hover:bg-gray-50 transition-all duration-300">
+                        <div class="relative">
+                            <div class="rounded-full w-16 h-16 flex items-center justify-center mx-auto gradient-icon-6 group-hover:scale-110 transition-transform">
+                                <span class="material-icons text-white">shopping_cart</span>
+                            </div>
+                            <!-- <span class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full whitespace-nowrap">Coming Soon</span> -->
+                        </div>
+                        <p class="mt-2 font-medium group-hover:text-blue-600">Shops</p>
                     </div>
-                    <p class="mt-2">Gyms</p>
                 </div>
-                <div class="text-center">
-                    <div class="rounded-full w-12 h-12 flex items-center justify-center mx-auto gradient-icon-3">
-                        <i class="material-icons text-white" aria-hidden="true">content_cut</i>
+
+                <div class="group relative cursor-pointer">
+                    <div class="text-center p-4 rounded-lg bg-white hover:bg-gray-50 transition-all duration-300">
+                        <div class="relative">
+                            <div class="rounded-full w-16 h-16 flex items-center justify-center mx-auto gradient-icon-4 group-hover:scale-110 transition-transform">
+                                <span class="material-icons text-white">store</span>
+                            </div>
+                            <!-- <span class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full whitespace-nowrap">Coming Soon</span> -->
+                        </div>
+                        <p class="mt-2 font-medium group-hover:text-blue-600">Stores</p>
                     </div>
-                    <p class="mt-2">Beauty Salons</p>
                 </div>
-                <div class="text-center">
-                    <div class="rounded-full w-12 h-12 flex items-center justify-center mx-auto gradient-icon-4">
-                        <i class="material-icons text-white" aria-hidden="true">local_pharmacy</i>
+
+                <div class="group relative cursor-pointer">
+                    <div class="text-center p-4 rounded-lg bg-white hover:bg-gray-50 transition-all duration-300">
+                        <div class="relative">
+                            <div class="rounded-full w-16 h-16 flex items-center justify-center mx-auto gradient-icon-2 group-hover:scale-110 transition-transform">
+                                <span class="material-icons text-white">hotel</span>
+                            </div>
+                            <!-- <span class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full whitespace-nowrap">Coming Soon</span> -->
+                        </div>
+                        <p class="mt-2 font-medium group-hover:text-blue-600">Hotels</p>
                     </div>
-                    <p class="mt-2">Pharmacies</p>
                 </div>
-                <div class="text-center">
-                    <div class="rounded-full w-12 h-12 flex items-center justify-center mx-auto gradient-icon-5">
-                        <i class="material-icons text-white" aria-hidden="true">pets</i>
+
+                <div class="group relative cursor-pointer">
+                    <div class="text-center p-4 rounded-lg bg-white hover:bg-gray-50 transition-all duration-300">
+                        <div class="relative">
+                            <div class="rounded-full w-16 h-16 flex items-center justify-center mx-auto gradient-icon-1 group-hover:scale-110 transition-transform">
+                                <span class="material-icons text-white">fitness_center</span>
+                            </div>
+                            <!-- <span class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full whitespace-nowrap">Coming Soon</span> -->
+                        </div>
+                        <p class="mt-2 font-medium group-hover:text-blue-600">Gyms</p>
                     </div>
-                    <p class="mt-2">Pet Services</p>
                 </div>
-                <div class="text-center">
-                    <div class="rounded-full w-12 h-12 flex items-center justify-center mx-auto gradient-icon-6">
-                        <i class="material-icons text-white" aria-hidden="true">home_repair_service</i>
+
+                <div class="group relative cursor-pointer">
+                    <div class="text-center p-4 rounded-lg bg-white hover:bg-gray-50 transition-all duration-300">
+                        <div class="relative">
+                            <div class="rounded-full w-16 h-16 flex items-center justify-center mx-auto gradient-icon-3 group-hover:scale-110 transition-transform">
+                                <span class="material-icons text-white">content_cut</span>
+                            </div>
+                            <!-- <span class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full whitespace-nowrap">Coming Soon</span> -->
+                        </div>
+                        <p class="mt-2 font-medium group-hover:text-blue-600">Beauty Salons</p>
                     </div>
-                    <p class="mt-2">Home Services</p>
                 </div>
-                <!-- Additional categories would follow similar structure -->
+
+                <div class="group relative cursor-pointer">
+                    <div class="text-center p-4 rounded-lg bg-white hover:bg-gray-50 transition-all duration-300">
+                        <div class="relative">
+                            <div class="rounded-full w-16 h-16 flex items-center justify-center mx-auto gradient-icon-4 group-hover:scale-110 transition-transform">
+                                <span class="material-icons text-white">local_pharmacy</span>
+                            </div>
+                            <!-- <span class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full whitespace-nowrap">Coming Soon</span> -->
+                        </div>
+                        <p class="mt-2 font-medium group-hover:text-blue-600">Pharmacies</p>
+                    </div>
+                </div>
+
+                <div class="group relative cursor-pointer">
+                    <div class="text-center p-4 rounded-lg bg-white hover:bg-gray-50 transition-all duration-300">
+                        <div class="relative">
+                            <div class="rounded-full w-16 h-16 flex items-center justify-center mx-auto gradient-icon-5 group-hover:scale-110 transition-transform">
+                                <span class="material-icons text-white">pets</span>
+                            </div>
+                            <!-- <span class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full whitespace-nowrap">Coming Soon</span> -->
+                        </div>
+                        <p class="mt-2 font-medium group-hover:text-blue-600">Pet Services</p>
+                    </div>
+                </div>
+
+                <div class="group relative cursor-pointer">
+                    <div class="text-center p-4 rounded-lg bg-white hover:bg-gray-50 transition-all duration-300">
+                        <div class="relative">
+                            <div class="rounded-full w-16 h-16 flex items-center justify-center mx-auto gradient-icon-6 group-hover:scale-110 transition-transform">
+                                <span class="material-icons text-white">home_repair_service</span>
+                            </div>
+                            <!-- <span class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full whitespace-nowrap">Coming Soon</span> -->
+                        </div>
+                        <p class="mt-2 font-medium group-hover:text-blue-600">Home Services</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -184,7 +304,10 @@
         <h3 class="text-xl font-normal mb-4">Curious about Khamgaon.online?</h3>
         <p class="text-lg mb-4 font-light">Scan the QR code to message us on WhatsApp and stay updated!</p>
         <img src="images/whatsapp.png" alt="WhatsApp QR Code" class="qr-code mx-auto mb-4" loading="lazy">
-        <a href="https://wa.me/message/XAHXJJJMHUKLD1" target="_blank" rel="noopener noreferrer" class="text-lg font-light">WhatsApp Us: +91-7038778801</a>
+        <a href="https://wa.me/message/XAHXJJJMHUKLD1" target="_blank" rel="noopener noreferrer" class="text-lg font-light" itemscope itemtype="http://schema.org/ContactPoint">
+            <span itemprop="contactType">WhatsApp</span> Us: 
+            <span itemprop="telephone">+91-7038778801</span>
+        </a>
         <img src="svgs/svg-bottom-left.svg" class="abstract-svg svg-bottom-left" alt="Abstract Design" loading="lazy">
     </section>
 
@@ -192,8 +315,9 @@
     <footer class="block-bg-white text-center w-full relative">
         <p class="mb-2">Follow us on social media:</p>
         <div class="flex justify-center mt-4 space-x-4 content">
-            <a href="https://www.facebook.com/profile.php?id=61567406970212" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600" aria-label="Facebook">
+            <a href="https://www.facebook.com/profile.php?id=61567406970212" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600" aria-label="Follow us on Facebook">
                 <i class="fab fa-facebook-square text-blue-600" aria-hidden="true"></i>
+                <span class="sr-only">Facebook</span>
             </a>
             <a href="https://x.com/khamgaononline" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400" aria-label="Twitter">
                 <i class="fab fa-twitter-square text-blue-400" aria-hidden="true"></i>
