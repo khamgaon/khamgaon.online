@@ -32,101 +32,14 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://khamgaon.online">
 
-    <!-- Add preconnect for external resources -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Move all resource hints to the top -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-
-    <!-- Add structured data for local business -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Khamgaon.online",
-      "description": "Online directory for Khamgaon businesses and community",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Khamgaon",
-        "addressRegion": "Maharashtra",
-        "addressCountry": "IN"
-      }
-    }
-    </script>
-
-    <!-- Additional SEO meta tags -->
-    <meta name="geo.region" content="IN-MH" />
-    <meta name="geo.placename" content="Khamgaon, Maharashtra" />
-    <meta name="distribution" content="global" />
-    <meta name="revisit-after" content="7 days" />
-    <meta name="rating" content="general" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    
-    <!-- More specific keywords -->
-    <meta name="keywords" content="Khamgaon, online directory, local business, community events, Maharashtra, Buldhana district, business listings, local services, Khamgaon shops, Khamgaon restaurants, Khamgaon schools, Khamgaon hospitals" />
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Khamgaon.online",
-        "url": "https://khamgaon.online",
-        "description": "Your one-stop platform for exploring Khamgaon, connecting residents with local businesses and community events.",
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://khamgaon.online/search?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-        },
-        "sameAs": [
-            "https://www.facebook.com/profile.php?id=61567406970212",
-            "https://x.com/khamgaononline",
-            "https://www.instagram.com/khamgaon.online"
-        ]
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Khamgaon.online",
-        "url": "https://khamgaon.online",
-        "logo": "https://khamgaon.online/images/logo.png",
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+91-7038778801",
-            "contactType": "customer service",
-            "availableLanguage": ["English", "Hindi", "Marathi"]
-        },
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Khamgaon",
-            "addressRegion": "Maharashtra",
-            "addressCountry": "IN"
-        }
-    }
-    </script>
-
-    <!-- Facebook OpenGraph -->
-    <meta property="og:site_name" content="Khamgaon.online">
-    <meta property="og:locale" content="en_IN">
-    <meta property="og:type" content="website">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-
-    <!-- Twitter Cards -->
-    <meta name="twitter:site" content="@khamgaononline">
-    <meta name="twitter:creator" content="@khamgaononline">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image:alt" content="Khamgaon.online - Connecting Khamgaon">
-
-    <!-- Preload critical assets -->
-    <link rel="preload" href="/images/logo.png" as="image">
-
-    <!-- DNS prefetch for external resources -->
-    <link rel="dns-prefetch" href="//fonts.googleapis.com">
-    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 
     <!-- Critical CSS inline -->
     <style>
@@ -159,74 +72,34 @@
 
     <!-- Optimized resource loading -->
     <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="style.css"></noscript>
-
-    <!-- Preload critical fonts -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/images/logo.png" as="image">
     
-    <!-- Preload critical CSS -->
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <!-- Remove duplicate resource loading -->
+    <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
     
-    <!-- Async load Font Awesome -->
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
-
-    <!-- Resource hints -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GHVRHGY6B6"></script>
+    <!-- Add cookie consent before GA4 -->
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        
-        // Replace G-XXXXXXXXXX with your actual GA4 measurement ID
-        gtag('config', 'G-XXXXXXXXXX', {
-            'send_page_view': true,
-            'anonymize_ip': true,
-            'cookie_flags': 'SameSite=None;Secure'
-        });
-
-        // Custom event tracking for key interactions
-        document.addEventListener('DOMContentLoaded', function() {
-            // Track WhatsApp clicks
-            document.querySelectorAll('a[href*="wa.me"]').forEach(function(link) {
-                link.addEventListener('click', function() {
-                    gtag('event', 'whatsapp_click', {
-                        'event_category': 'engagement',
-                        'event_label': 'WhatsApp Contact'
-                    });
-                });
+        function initGA() {
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            
+            gtag('config', 'G-GHVRHGY6B6', {
+                'send_page_view': true,
+                'anonymize_ip': true,
+                'cookie_flags': 'SameSite=None;Secure'
             });
+        }
 
-            // Track social media clicks
-            document.querySelectorAll('a[href*="facebook.com"], a[href*="x.com"], a[href*="instagram.com"]').forEach(function(link) {
-                link.addEventListener('click', function() {
-                    gtag('event', 'social_click', {
-                        'event_category': 'engagement',
-                        'event_label': this.href.includes('facebook.com') ? 'Facebook' : 
-                                     this.href.includes('x.com') ? 'Twitter' : 'Instagram'
-                    });
-                });
-            });
-
-            // Track category views (when they become clickable)
-            document.querySelectorAll('.category-card').forEach(function(card) {
-                card.addEventListener('click', function() {
-                    gtag('event', 'category_view', {
-                        'event_category': 'navigation',
-                        'event_label': this.querySelector('p').textContent
-                    });
-                });
-            });
-        });
+        // Only load GA after consent
+        if (localStorage.getItem('cookieConsent') === 'true') {
+            const gaScript = document.createElement('script');
+            gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-GHVRHGY6B6';
+            gaScript.async = true;
+            document.head.appendChild(gaScript);
+            gaScript.onload = initGA;
+        }
     </script>
-
 </head>
 
 <body class="text-gray-800">
