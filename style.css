@@ -266,3 +266,38 @@ h1, h2, h3 {
         padding: 2px 16px;
     }
 }
+
+.group:hover .gradient-icon-1,
+.group:hover .gradient-icon-2,
+.group:hover .gradient-icon-3,
+.group:hover .gradient-icon-4,
+.group:hover .gradient-icon-5,
+.group:hover .gradient-icon-6 {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.group .material-icons {
+    transition: transform 0.3s ease;
+}
+
+.group:hover .material-icons {
+    transform: scale(1.1);
+}
+
+.faq-item {
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    transform: translateX(10px);
+}
+
+.faq-icon {
+    transition: transform 0.3s ease;
+}
+
+.faq-item:hover .faq-icon {
+    transform: rotate(15deg);
+}
+
