@@ -1,0 +1,41 @@
+:root {
+    /* Primary Colors */
+    --primary-blue: #666fff;
+    --primary-purple: #cc66ff;
+    
+    /* Text Colors */
+    --text-primary: #333333;
+    --text-secondary: #555555;
+    --text-light: #666666;
+    --text-dark: #222222;
+    
+    /* Background Colors */
+    --bg-white: #ffffff;
+    --bg-gray: #f5f5f5;
+    --bg-hover: rgba(245, 245, 245, 0.95);
+    
+    /* Gradient Colors */
+    --gradient-banner: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+    --gradient-bg-gray: linear-gradient(135deg, rgba(102, 111, 255, 0.5), rgba(204, 102, 255, 0.25));
+    
+    /* Icon Gradients */
+    --gradient-icon-1: linear-gradient(90deg, #FF6A00, #EE0979);
+    --gradient-icon-2: linear-gradient(90deg, #6A00FF, #F000FF);
+    --gradient-icon-3: linear-gradient(90deg, #00BFFF, #1E90FF);
+    --gradient-icon-4: linear-gradient(90deg, #32CD32, #228B22);
+    --gradient-icon-5: linear-gradient(90deg, #FFD700, #FFA500);
+    --gradient-icon-6: linear-gradient(90deg, #FF4500, #FF6347);
+    
+    /* Social Media Colors */
+    --facebook-blue: #1877f2;
+    --twitter-blue: #1da1f2;
+    --instagram-pink: #e4405f;
+    
+    /* Shadow Colors */
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+    
+    /* Link Colors */
+    --link-blue: #0000ff;
+    --link-hover: #0056b3;
+} 
