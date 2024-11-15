@@ -3,18 +3,15 @@ import React from 'react';
 const Header = () => {
   return (
     <header className="block-bg-white w-full text-center relative">
-      <div className="logo-container mb-6">
+      <div className="logo-container">
         <img
-          src="images/logo.png"
-          alt="Khamgaon.online Logo"
-          width="200"
-          height="200"
+          src="images/logos/logo.png"
+          alt="Khamgaon Online"
           className="rounded-lg mx-auto"
           fetchpriority="high"
         />
       </div>
-      <h1 className="text-4xl font-light mb-4">Khamgaon Online</h1>
-      <h2 className="text-2xl font-thin">
+      <h2 className="text-lg sm:text-3xl font-light">
         Connecting Khamgaon like never before!
       </h2>
       <div className="svg-container" aria-hidden="true">
