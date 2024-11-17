@@ -1,5 +1,5 @@
 import React from 'react';
-import FeatureCard from './FeatureCard';
+import Card from '../common/Card';
 import { People, Briefcase, Calendar, Newspaper, Shop, Chat } from 'react-bootstrap-icons';
 
 const Features = () => {
@@ -56,12 +56,13 @@ const Features = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8">
           {features.map((feature, index) => (
-            <FeatureCard 
+            <Card 
               key={index}
               icon={feature.icon}
               title={feature.title}
               description={feature.description}
               gradientClass={feature.gradientClass}
+              isFeature={true}
             />
           ))}
         </div>
