@@ -1,6 +1,6 @@
 import React from 'react';
 import { Facebook, Twitter, Instagram } from 'react-bootstrap-icons';
-import svgBottomRight from '../../assets/svgs/svg-bottom-right.svg'; // Import the SVG
+import { ReactComponent as SvgBottomRight } from '../../assets/svgs/svg-bottom-right.svg'; // Import the SVG as a React component
 
 const Footer = () => {
   const socialLinks = [
@@ -22,7 +22,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="block-bg-white text-center w-full relative py-8">
+    <footer className="block-bg-white text-center w-full relative py-8" role="contentinfo">
       <div className="max-w-3xl mx-auto px-4">
         <p className="mb-2">Follow us on social media:</p>
         <div className="flex justify-center mt-4 space-x-4 content">
@@ -35,7 +35,7 @@ const Footer = () => {
               className="hover:text-blue-600"
               aria-label={`Follow us on ${social.label}`}
             >
-              <social.icon size={32} />
+              <social.icon size={32} aria-hidden="true" />
               <span className="sr-only">{social.label}</span>
             </a>
           ))}
@@ -61,7 +61,7 @@ const Footer = () => {
           </a>
         </div>
       </div>
-      <img src={svgBottomRight} className="abstract-svg svg-bottom-right" alt="Abstract Design" loading="lazy" />
+      <SvgBottomRight className="abstract-svg svg-bottom-right" alt="Abstract Design" loading="lazy" />
     </footer>
   );
 };

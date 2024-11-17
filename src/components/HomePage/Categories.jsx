@@ -12,11 +12,11 @@ import {
   Shield, 
   Hammer 
 } from 'react-bootstrap-icons';
-import svgTopRight from '../../assets/svgs/svg-top-right.svg'; // Import the SVG
+import { ReactComponent as SvgTopRight } from '../../assets/svgs/svg-top-right.svg';
 
 const CategoryItem = ({ icon: Icon, title, gradientClass }) => {
   return (
-    <div className="group relative cursor-pointer">
+    <div className="group relative cursor-pointer" role="button" tabIndex={0}>
       <div className="text-center p-4 rounded-lg bg-white hover:bg-gray-50 transition-all duration-300">
         <div className="relative">
           <div className={`rounded-full w-16 h-16 flex items-center justify-center mx-auto ${gradientClass} group-hover:scale-110 transition-transform`}>
@@ -45,9 +45,9 @@ const Categories = () => {
   ];
 
   return (
-    <section className="block-bg-white w-full relative py-8">
+    <section className="block-bg-white w-full relative py-8" aria-labelledby="categories-title">
       <div className="max-w-7xl mx-auto">
-        <h3 className="text-center text-gray-700 text-2xl mb-2">
+        <h3 className="text-center text-gray-700 text-2xl mb-2" id="categories-title">
           Explore Categories on Khamgaon.online
         </h3>
         <p className="text-center text-gray-700 font-light text-lg mb-8">
@@ -60,7 +60,7 @@ const Categories = () => {
           ))}
         </div>
       </div>
-      <img src={svgTopRight} className="abstract-svg svg-top-right" alt="Abstract Design" loading="lazy" />
+      <SvgTopRight className="abstract-svg svg-top-right" alt="Abstract Design" loading="lazy" />
     </section>
   );
 };
