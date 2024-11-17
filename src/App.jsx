@@ -7,10 +7,6 @@ import PrivacyPolicy from './components/PrivacyPolicy';
 import Layout from './components/Layout';
 import './styles/index.css';
 
-import '@fontsource/inter/100.css';
-import '@fontsource/inter/300.css';
-import '@fontsource/inter/400.css';
-
 function App() {
   return (
     <HelmetProvider>
