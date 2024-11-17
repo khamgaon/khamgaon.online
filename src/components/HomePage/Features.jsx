@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from '../common/Card';
 import { People, Briefcase, Calendar, Newspaper, Shop, Chat } from 'react-bootstrap-icons';
+import { ReactComponent as SvgTopRight } from '../../assets/svgs/svg-top-right.svg';
 
 const Features = () => {
   const features = [
@@ -67,6 +68,8 @@ const Features = () => {
           ))}
         </div>
       </div>
+      <SvgTopRight className="abstract-svg svg-top-right" alt="Abstract Design" loading="lazy" />
+
     </section>
   );
 };

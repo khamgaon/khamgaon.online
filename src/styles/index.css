@@ -1,18 +1,6 @@
 @import 'colors.css';
-
-/* Global Settings */
-body {
-    font-family: 'Inter', sans-serif;
-    color: var(--text-primary);
-    margin: 0;
-    padding: 0;
-}
-
-/* Header Styles */
-h1, h2, h3 {
-    font-weight: 400;
-    color: var(--text-dark);
-}
+@import 'typography.css';
+@import 'spacing.css';
 
 /* Image Container */
 .image-container {
@@ -150,16 +138,6 @@ h1, h2, h3 {
     font-size: 1rem;
 }
 
-/* Links */
-a {
-    color: var(--link-blue);
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    color: var(--link-hover);
-}
-
 /* Social Media Icons */
 .fab.fa-facebook-square {
     color: var(--facebook-blue);
@@ -172,11 +150,3 @@ a:hover {
 .fab.fa-instagram-square {
     color: var(--instagram-pink);
 }
-
-/* Icon Gradients */
-.gradient-icon-1 { background: var(--gradient-icon-1); }
-.gradient-icon-2 { background: var(--gradient-icon-2); }
-.gradient-icon-3 { background: var(--gradient-icon-3); }
-.gradient-icon-4 { background: var(--gradient-icon-4); }
-.gradient-icon-5 { background: var(--gradient-icon-5); }
-.gradient-icon-6 { background: var(--gradient-icon-6); }

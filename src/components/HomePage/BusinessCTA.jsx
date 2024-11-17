@@ -16,7 +16,7 @@ const BusinessCTA = () => {
           rel="noopener noreferrer"
           className="inline-block px-8 py-3 bg-white text-blue-600 rounded hover:bg-blue-50 transition-colors shadow-md"
         >
-          Register Interest
+          Register your interest on WhatsApp
         </a>
       </div>
     </section>

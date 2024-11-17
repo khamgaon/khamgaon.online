@@ -12,7 +12,6 @@ import {
   Shield, 
   Hammer 
 } from 'react-bootstrap-icons';
-import { ReactComponent as SvgTopRight } from '../../assets/svgs/svg-top-right.svg';
 import Card from '../common/Card';
 
 const Categories = () => {
@@ -52,7 +51,6 @@ const Categories = () => {
           ))}
         </div>
       </div>
-      <SvgTopRight className="abstract-svg svg-top-right" alt="Abstract Design" loading="lazy" />
     </section>
   );
 };
