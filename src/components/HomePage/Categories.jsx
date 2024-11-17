@@ -12,6 +12,7 @@ import {
   Shield, 
   Hammer 
 } from 'react-bootstrap-icons';
+import svgTopRight from '../../assets/svgs/svg-top-right.svg'; // Import the SVG
 
 const CategoryItem = ({ icon: Icon, title, gradientClass }) => {
   return (
@@ -59,6 +60,7 @@ const Categories = () => {
           ))}
         </div>
       </div>
+      <img src={svgTopRight} className="abstract-svg svg-top-right" alt="Abstract Design" loading="lazy" />
     </section>
   );
 };

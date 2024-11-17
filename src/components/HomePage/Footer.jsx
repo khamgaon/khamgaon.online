@@ -1,5 +1,6 @@
 import React from 'react';
 import { Facebook, Twitter, Instagram } from 'react-bootstrap-icons';
+import svgBottomRight from '../../assets/svgs/svg-bottom-right.svg'; // Import the SVG
 
 const Footer = () => {
   const socialLinks = [
@@ -60,6 +61,7 @@ const Footer = () => {
           </a>
         </div>
       </div>
+      <img src={svgBottomRight} className="abstract-svg svg-bottom-right" alt="Abstract Design" loading="lazy" />
     </footer>
   );
 };

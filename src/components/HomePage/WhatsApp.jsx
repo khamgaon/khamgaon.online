@@ -1,4 +1,6 @@
 import React from 'react';
+import whatsappQR from '../../assets/images/whatsapp.png'; // Import the WhatsApp QR code image
+import svgBottomLeft from '../../assets/svgs/svg-bottom-left.svg'; // Import the SVG
 
 const WhatsApp = () => {
   return (
@@ -11,7 +13,7 @@ const WhatsApp = () => {
           Scan the QR code to message us on WhatsApp and stay updated!
         </p>
         <img
-          src="images/whatsapp.png"
+          src={whatsappQR}
           alt="WhatsApp QR Code"
           className="qr-code mx-auto mb-4"
           loading="lazy"
@@ -30,7 +32,7 @@ const WhatsApp = () => {
           <span itemProp="telephone">+91-7038778801</span>
         </a>
         <img
-          src="svgs/svg-bottom-left.svg"
+          src={svgBottomLeft}
           className="abstract-svg svg-bottom-left"
           alt="Abstract Design"
           loading="lazy"

@@ -1,11 +1,13 @@
 import React from 'react';
+import logo from '../../assets/images/logos/logo.png';
+import svgTopLeft from '../../assets/svgs/svg-top-left.svg';
 
 const Header = () => {
   return (
     <header className="block-bg-white w-full text-center relative">
       <div className="logo-container">
         <img
-          src="images/logos/logo.png"
+          src={logo}
           alt="Khamgaon Online"
           className="rounded-lg mx-auto"
           fetchpriority="high"
@@ -15,13 +17,13 @@ const Header = () => {
         Connecting Khamgaon like never before!
       </h2>
       <div className="svg-container" aria-hidden="true">
-        <object
-          data="svgs/svg-top-left.svg"
-          type="image/svg+xml"
+        <img
+          src={svgTopLeft}
+          alt="Top Left Abstract Design"
           className="abstract-svg svg-top-left"
           width="100"
           height="100"
-        ></object>
+        />
       </div>
     </header>
   );
