@@ -2,11 +2,11 @@
 import { 
   People, 
   Business, 
-  Event,
-  Security,
-  Phone,
-  ChecklistRtl
-} from '@mui/icons-material';
+  Calendar,
+  ShieldLock,
+  Telephone,
+  CheckCircle
+} from 'react-bootstrap-icons';
 
 import { 
   faFacebookSquare, 
@@ -14,13 +14,13 @@ import {
   faInstagramSquare 
 } from '@fortawesome/free-brands-svg-icons';
 
-export const MaterialIcons = {
+export const BootstrapIcons = {
   People,
   Business,
-  Event,
-  Security,
-  Phone,
-  ChecklistRtl
+  Calendar,
+  ShieldLock,
+  Telephone,
+  CheckCircle
 };
 
 export const SocialIcons = {

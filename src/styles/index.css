@@ -49,15 +49,6 @@ h1, h2, h3 {
     text-shadow: 1px 1px 2px var(--shadow-light);
 }
 
-.image-container i {
-    font-size: 2.5rem;
-    display: inline-block;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-top: 1rem;
-}
-
-/* Card Text */
 .image-container p {
     font-size: 0.9rem;
     color: var(--text-secondary);
@@ -189,16 +180,3 @@ a:hover {
 .gradient-icon-4 { background: var(--gradient-icon-4); }
 .gradient-icon-5 { background: var(--gradient-icon-5); }
 .gradient-icon-6 { background: var(--gradient-icon-6); }
-
-
-.material-icons {
-    font-family: 'Material Icons';
-    font-weight: normal;
-    font-style: normal;
-    font-size: 24px; /* Adjust size as needed */
-    line-height: 1; /* Adjust line height as needed */
-    text-transform: none;
-    display: inline-block;
-    white-space: nowrap;
-    direction: ltr;
-  }

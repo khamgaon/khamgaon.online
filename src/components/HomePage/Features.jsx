@@ -1,40 +1,41 @@
 import React from 'react';
 import FeatureCard from './FeatureCard';
+import { People, Briefcase, Calendar, Newspaper, Shop, Chat } from 'react-bootstrap-icons';
 
 const Features = () => {
   const features = [
     {
-      icon: 'people',
+      icon: <People />,
       title: 'Community Engagement',
       description: 'Join discussions, share insights, and connect with fellow Khamgaon residents.',
       gradientClass: 'gradient-icon-1'
     },
     {
-      icon: 'business',
+      icon: <Briefcase />,
       title: 'Local Business Directory',
       description: 'Explore and support local businesses and professionals in Khamgaon.',
       gradientClass: 'gradient-icon-2'
     },
     {
-      icon: 'event',
+      icon: <Calendar />,
       title: 'Local Events',
       description: 'Stay updated with upcoming events, festivals, and gatherings in Khamgaon.',
       gradientClass: 'gradient-icon-3'
     },
     {
-      icon: 'newspaper',
+      icon: <Newspaper />,
       title: 'News & Updates',
       description: 'Get the latest news and updates about Khamgaon and surrounding areas.',
       gradientClass: 'gradient-icon-4'
     },
     {
-      icon: 'store',
+      icon: <Shop />,
       title: 'Marketplace',
       description: 'Buy, sell, or rent items within the Khamgaon community.',
       gradientClass: 'gradient-icon-5'
     },
     {
-      icon: 'forum',
+      icon: <Chat />,
       title: 'Discussion Forums',
       description: 'Participate in community discussions and share your thoughts.',
       gradientClass: 'gradient-icon-6'

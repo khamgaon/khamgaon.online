@@ -1,20 +1,21 @@
 import React from 'react';
+import { Facebook, Twitter, Instagram } from 'react-bootstrap-icons';
 
 const Footer = () => {
   const socialLinks = [
     {
       href: "https://www.facebook.com/profile.php?id=61567406970212",
-      icon: "fab fa-facebook-square text-blue-600",
+      icon: Facebook,
       label: "Facebook"
     },
     {
       href: "https://x.com/khamgaononline",
-      icon: "fab fa-twitter-square text-blue-400",
+      icon: Twitter,
       label: "Twitter"
     },
     {
       href: "https://www.instagram.com/khamgaon.online",
-      icon: "fab fa-instagram-square text-pink-500",
+      icon: Instagram,
       label: "Instagram"
     }
   ];
@@ -30,10 +31,10 @@ const Footer = () => {
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`hover:text-${social.icon.split(' ').pop()}`}
+              className="hover:text-blue-600"
               aria-label={`Follow us on ${social.label}`}
             >
-              <i className={social.icon} aria-hidden="true"></i>
+              <social.icon size={32} />
               <span className="sr-only">{social.label}</span>
             </a>
           ))}
@@ -58,15 +59,6 @@ const Footer = () => {
             Privacy Policy
           </a>
         </div>
-
-        <img
-          src="svgs/svg-bottom-right.svg"
-          className="abstract-svg svg-bottom-right"
-          alt="Abstract Design"
-          loading="lazy"
-          width="100"
-          height="100"
-        />
       </div>
     </footer>
   );

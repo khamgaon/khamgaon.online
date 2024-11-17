@@ -1,12 +1,25 @@
 import React from 'react';
+import { 
+  Hospital, 
+  Basket, 
+  Book, 
+  Tree, 
+  Cart, 
+  Shop, 
+  House, 
+  Heart, 
+  Scissors, 
+  Shield, 
+  Hammer 
+} from 'react-bootstrap-icons';
 
-const CategoryItem = ({ icon, title, gradientClass }) => {
+const CategoryItem = ({ icon: Icon, title, gradientClass }) => {
   return (
     <div className="group relative cursor-pointer">
       <div className="text-center p-4 rounded-lg bg-white hover:bg-gray-50 transition-all duration-300">
         <div className="relative">
           <div className={`rounded-full w-16 h-16 flex items-center justify-center mx-auto ${gradientClass} group-hover:scale-110 transition-transform`}>
-            <span className="material-icons text-white">{icon}</span>
+            <Icon size={32} color="white" />
           </div>
         </div>
         <p className="mt-2 font-medium group-hover:text-blue-600">{title}</p>
@@ -17,18 +30,17 @@ const CategoryItem = ({ icon, title, gradientClass }) => {
 
 const Categories = () => {
   const categories = [
-    { icon: 'local_hospital', title: 'Hospitals', gradientClass: 'gradient-icon-1' },
-    { icon: 'restaurant', title: 'Restaurants', gradientClass: 'gradient-icon-3' },
-    { icon: 'school', title: 'Schools', gradientClass: 'gradient-icon-5' },
-    { icon: 'park', title: 'Parks', gradientClass: 'gradient-icon-2' },
-    { icon: 'shopping_cart', title: 'Shops', gradientClass: 'gradient-icon-6' },
-    { icon: 'store', title: 'Stores', gradientClass: 'gradient-icon-4' },
-    { icon: 'hotel', title: 'Hotels', gradientClass: 'gradient-icon-2' },
-    { icon: 'fitness_center', title: 'Gyms', gradientClass: 'gradient-icon-1' },
-    { icon: 'content_cut', title: 'Beauty Salons', gradientClass: 'gradient-icon-3' },
-    { icon: 'local_pharmacy', title: 'Pharmacies', gradientClass: 'gradient-icon-4' },
-    { icon: 'pets', title: 'Pet Services', gradientClass: 'gradient-icon-5' },
-    { icon: 'home_repair_service', title: 'Home Services', gradientClass: 'gradient-icon-6' }
+    { icon: Hospital, title: 'Hospitals', gradientClass: 'gradient-icon-1' },
+    { icon: Basket, title: 'Restaurants', gradientClass: 'gradient-icon-3' },
+    { icon: Book, title: 'Schools', gradientClass: 'gradient-icon-5' },
+    { icon: Tree, title: 'Parks', gradientClass: 'gradient-icon-2' },
+    { icon: Cart, title: 'Shops', gradientClass: 'gradient-icon-6' },
+    { icon: Shop, title: 'Stores', gradientClass: 'gradient-icon-4' },
+    { icon: House, title: 'Hotels', gradientClass: 'gradient-icon-2' },
+    { icon: Heart, title: 'Gyms', gradientClass: 'gradient-icon-1' },
+    { icon: Scissors, title: 'Beauty Salons', gradientClass: 'gradient-icon-3' },
+    { icon: Shield, title: 'Health Services', gradientClass: 'gradient-icon-4' },
+    { icon: Hammer, title: 'Home Services', gradientClass: 'gradient-icon-6' }
   ];
 
   return (
