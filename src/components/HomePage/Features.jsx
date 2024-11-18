@@ -44,7 +44,7 @@ const Features = () => {
   ];
 
   return (
-    <section className="block-bg-gray w-full relative py-12" role="region" aria-label="Key Features">
+    <section className="block-bg-gray w-full relative py-12" aria-label="Key Features">
       <div className="max-w-7xl mx-auto px-4">
         <div className="my-8">
           <h3 className="text-center text-gray-700 text-2xl mb-2">
