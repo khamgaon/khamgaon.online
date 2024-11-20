@@ -5,6 +5,7 @@ import HomePage from './components/HomePage';
 import Terms from './components/Terms';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import Layout from './components/Layout';
+import CategoryPage from './components/CategoryPage';
 import './styles/index.css';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/category/:slug" element={<CategoryPage />} />
             </Route>
           </Routes>
         </div>
