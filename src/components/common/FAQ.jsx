@@ -1,4 +1,5 @@
-import React from 'react';
+// src/components/common/FAQ.jsx
+import React, { useState } from 'react';
 import { 
   InfoCircle, 
   Briefcase, 
@@ -9,17 +10,32 @@ import {
 } from 'react-bootstrap-icons';
 
 const FAQItem = ({ icon: Icon, question, answer }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
-      <div className="flex items-start">
-        <div className="rounded-full bg-gradient-to-r from-blue-500 to-purple-500 p-3 mr-4 flex items-center justify-center">
-          <Icon size={32} color="white" />
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full text-left flex items-center justify-between focus:outline-none"
+        aria-expanded={isOpen}
+      >
+        <div className="flex items-center">
+          <div className="rounded-full bg-gradient-to-r from-blue-500 to-purple-500 p-3 mr-4 flex items-center justify-center">
+            <Icon size={24} color="white" />
+          </div>
+          <h4 className="font-semibold text-lg text-gray-800">{question}</h4>
         </div>
-        <div>
-          <h4 className="font-semibold text-lg mb-3">{question}</h4>
-          <p className="text-gray-600 leading-relaxed">{answer}</p>
-        </div>
-      </div>
+        <ChevronDown
+          size={20}
+          className={`transform transition-transform duration-200 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
+          aria-hidden="true"
+        />
+      </button>
+      {isOpen && (
+        <p className="mt-4 text-gray-600 leading-relaxed">
+          {answer}
+        </p>
+      )}
     </div>
   );
 };
@@ -59,11 +75,11 @@ const FAQ = () => {
   ];
 
   return (
-    <section className="block-bg-gray w-full relative py-12">
-      <div className="max-w-4xl mx-auto px-4">
-        <h3 className="text-2xl font-normal text-center mb-12">
+    <section className="w-full relative py-12" aria-labelledby="faq-title">
+      <div className="max-w-5xl mx-auto px-4">
+        <h2 className="text-3xl font-semibold text-center text-gray-800 mb-8" id="faq-title">
           Frequently Asked Questions
-        </h3>
+        </h2>
         <div className="space-y-6">
           {faqs.map((faq, index) => (
             <FAQItem key={index} {...faq} />
