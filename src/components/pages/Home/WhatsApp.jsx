@@ -1,6 +1,6 @@
 import React from 'react';
-import whatsappQR from '../../assets/images/whatsapp.png'; // Import the WhatsApp QR code image
-import { ReactComponent as SvgBottomLeft } from '../../assets/svgs/svg-bottom-left.svg'; // Import the SVG as a React component
+import whatsappQR from 'assets/images/whatsapp.png';
+import { ReactComponent as SvgBottomLeft } from 'assets/svgs/svg-bottom-left.svg';
 
 const WhatsApp = () => {
   return (

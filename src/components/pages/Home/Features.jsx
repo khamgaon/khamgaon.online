@@ -1,7 +1,7 @@
 import React from 'react';
-import Card from '../common/Card';
+import Card from '../../common/Card';
 import { People, Briefcase, Calendar, Newspaper, Shop, Chat } from 'react-bootstrap-icons';
-import { ReactComponent as SvgTopRight } from '../../assets/svgs/svg-top-right.svg';
+import { ReactComponent as SvgTopRight } from 'assets/svgs/svg-top-right.svg';
 
 const Features = () => {
   const features = [
@@ -74,4 +74,4 @@ const Features = () => {
   );
 };
 
-export default Features; 
+export default Features;

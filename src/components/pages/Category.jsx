@@ -1,9 +1,9 @@
 // src/components/CategoryPage.jsx
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchBusinessesByCategory } from '../api';
-import { ReactComponent as SvgTopRight } from '../assets/svgs/svg-top-right.svg';
-import { ReactComponent as SvgBottomLeft } from '../assets/svgs/svg-bottom-left.svg';
+import { fetchBusinessesByCategory } from 'api';
+import { ReactComponent as SvgTopRight } from 'assets/svgs/svg-top-right.svg';
+import { ReactComponent as SvgBottomLeft } from 'assets/svgs/svg-bottom-left.svg';
 import { Link, Phone, GeoAlt, Globe } from 'react-bootstrap-icons';
 
 const BusinessCard = ({ business }) => (

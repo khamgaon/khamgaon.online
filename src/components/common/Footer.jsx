@@ -1,6 +1,9 @@
 import React from 'react';
 import { Facebook, Twitter, Instagram } from 'react-bootstrap-icons';
-import { ReactComponent as SvgBottomRight } from '../../assets/svgs/svg-bottom-right.svg'; // Import the SVG as a React component
+import { Link } from 'react-router-dom';
+
+// Absolute import for SVG component
+import { ReactComponent as SvgBottomRight } from 'assets/svgs/svg-bottom-right.svg';
 
 const Footer = () => {
   const socialLinks = [
@@ -66,4 +69,4 @@ const Footer = () => {
   );
 };
 
-export default Footer; 
+export default Footer;

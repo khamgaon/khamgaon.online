@@ -1,7 +1,11 @@
 import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import SEO from './SEO';
-import seoConfig from '../constants/seo';
+
+// Absolute imports
+import SEO from 'components/common/SEO';
+import seoConfig from 'constants/seo';
+import Header from 'components/common/Header';
+import Footer from 'components/common/Footer';
 
 function Layout() {
   const location = useLocation();
@@ -11,9 +15,11 @@ function Layout() {
   return (
     <>
       <SEO {...currentSeoConfig} />
+      <Header />
       <Outlet />
+      <Footer />
     </>
   );
 }
 
-export default Layout; 
+export default Layout;
