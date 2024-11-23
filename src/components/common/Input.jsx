@@ -15,9 +15,10 @@ const Input = ({
   const inputId = `input-${name}`;
 
   return (
-    <div className="mb-4">
-      <label htmlFor={inputId} className="block text-sm font-medium text-gray-700 mb-1">
+    <div className="mb-6">
+      <label htmlFor={inputId} className="block text-base font-medium text-gray-800 mb-1">
         {label}
+        {required && <span className="text-red-500 ml-1">*</span>}
       </label>
       {type === 'textarea' ? (
         <textarea
@@ -27,9 +28,12 @@ const Input = ({
           onChange={onChange}
           className={`w-full px-4 py-2 border ${
             error ? 'border-red-500' : 'border-gray-300'
-          } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+          } rounded-lg focus:outline-none focus:ring-2 ${
+            error ? 'focus:ring-red-500' : 'focus:ring-blue-500'
+          } transition-colors duration-200`}
           placeholder={placeholder}
           required={required}
+          rows="5"
         ></textarea>
       ) : (
         <input
@@ -40,12 +44,14 @@ const Input = ({
           onChange={onChange}
           className={`w-full px-4 py-2 border ${
             error ? 'border-red-500' : 'border-gray-300'
-          } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+          } rounded-lg focus:outline-none focus:ring-2 ${
+            error ? 'focus:ring-red-500' : 'focus:ring-blue-500'
+          } transition-colors duration-200`}
           placeholder={placeholder}
           required={required}
         />
       )}
-      {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
+      {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
     </div>
   );
 };

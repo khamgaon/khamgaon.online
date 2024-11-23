@@ -1,36 +1,54 @@
+// src/components/common/Card.jsx
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const Card = ({ icon, title, description, gradientClass, isFeature, link }) => {
-  const CardContent = (
+const Card = ({ icon, title, description, gradientClass, link, children }) => {
+  const Content = (
     <div className="p-6">
-      <div className={`text-white text-xl rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 ${gradientClass}`}>
-        {icon}
-      </div>
-      <h4 className="font-semibold">{title}</h4>
-      {isFeature && <p className="text-gray-600">{description}</p>}
+      {icon && (
+        <div
+          className={`text-white text-xl rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 ${gradientClass}`}
+        >
+          {icon}
+        </div>
+      )}
+      {title && <h4 className="font-semibold">{title}</h4>}
+      {description && <p className="text-gray-600">{description}</p>}
+      {children}
     </div>
   );
 
   return link ? (
-    <Link to={link} className="block-bg-white shadow text-center transform hover:-translate-y-1 transition-all duration-300 cursor-pointer">
-      {CardContent}
+    <Link
+      to={link}
+      className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 text-center"
+    >
+      {Content}
     </Link>
   ) : (
-    <div className="block-bg-white shadow text-center">
-      {CardContent}
+    <div className="bg-white rounded-lg shadow-md text-center">
+      {Content}
     </div>
   );
 };
 
 Card.propTypes = {
-  icon: PropTypes.node.isRequired,
-  title: PropTypes.string.isRequired,
+  icon: PropTypes.node,
+  title: PropTypes.string,
   description: PropTypes.string,
-  gradientClass: PropTypes.string.isRequired,
-  isFeature: PropTypes.bool,
-  link: PropTypes.string
+  gradientClass: PropTypes.string,
+  link: PropTypes.string,
+  children: PropTypes.node,
+};
+
+Card.defaultProps = {
+  icon: null,
+  title: '',
+  description: '',
+  gradientClass: '',
+  link: '',
+  children: null,
 };
 
 export default Card;

@@ -88,6 +88,12 @@ const CategoryPage = () => {
   );
 
   return (
+    <PageWrapper
+    className="bg-gradient-to-br from-blue-50 via-purple-50/80 to-pink-50"
+    topSvg={SvgPattern1}
+    bottomSvg={SvgPattern2}
+  >
+
     <div className="block-bg-gray min-h-screen w-full relative py-12">
       <div className="max-w-7xl mx-auto px-4">
         <header className="text-center mb-12">
@@ -111,10 +117,8 @@ const CategoryPage = () => {
           </div>
         )}
       </div>
-      
-      <SvgTopRight className="abstract-svg svg-top-right" aria-hidden="true" />
-      <SvgBottomLeft className="abstract-svg svg-bottom-left" aria-hidden="true" />
-    </div>
+      </div>
+      </PageWrapper>
   );
 };
 
