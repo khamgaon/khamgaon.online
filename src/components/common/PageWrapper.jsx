@@ -78,7 +78,7 @@ const PageWrapper = ({ children, className }) => {
 
   return (
     <main
-      className={`bg-gradient-to-br ${variant.gradient} w-full min-h-screen py-16 px-4 relative flex items-center justify-center overflow-hidden ${className}`}
+      className={`bg-gradient-to-br ${variant.gradient} w-full min-h-screen py-16 px-4 relative flex justify-center overflow-hidden ${className}`}
       role="main"
     >
       <div className="absolute inset-0 overflow-hidden">
