@@ -4,7 +4,6 @@ import SocialLinks from './SocialLinks';
 import NavLinks from './NavLinks';
 import { Facebook, Twitter, Instagram } from 'react-bootstrap-icons';
 
-
 const Footer = () => {
   const socialLinks = [
     {
@@ -45,7 +44,7 @@ const Footer = () => {
         {/* Company Information */}
         <div className="mb-6">
           <p className="text-gray-600 text-sm">
-            Khamgaon, located in Maharashtra, is renowned for its rich agricultural heritage and vibrant community. Known as the 'Cotton City,' Khamgaon plays a pivotal role in the cotton industry of India. The town boasts a blend of traditional charm and modern amenities, offering residents and visitors alike a welcoming environment with numerous local businesses, cultural events, and essential services.
+            Khamgaon, located in Maharashtra, is renowned for its rich agricultural heritage and vibrant community. Known as the &apos;Cotton City,&apos; Khamgaon plays a pivotal role in the cotton industry of India. The town boasts a blend of traditional charm and modern amenities, offering residents and visitors alike a welcoming environment with numerous local businesses, cultural events, and essential services.
             <br />
             <br />
             Khamgaon Online connects the Khamgaon community with local businesses, events, and essential services. Stay informed and engaged with our platform.

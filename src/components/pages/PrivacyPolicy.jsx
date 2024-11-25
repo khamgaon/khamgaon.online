@@ -11,8 +11,7 @@ const PrivacyPolicy = () => {
       <section className="mb-6">
         <h2 className="text-2xl font-semibold">1. Introduction</h2>
         <p>
-          This Privacy Policy explains how Khamgaon.online ("we," "us," or "our") collects, uses, and discloses your information when you visit our website, Khamgaon.online (the "Site").
-        </p>
+        This Privacy Policy explains how Khamgaon.online (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) collects, uses, and discloses your information when you visit our website, Khamgaon.online (the &quot;Site&quot;).        </p>
       </section>
 
       <section className="mb-6">

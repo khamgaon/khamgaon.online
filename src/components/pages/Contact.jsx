@@ -62,7 +62,7 @@ Message: ${formData.message}
       <div className="text-center mb-12">
         <h1 className="text-4xl font-thin mb-4 text-gray-800">Contact Us</h1>
         <p className="text-lg font-light text-gray-600">
-          We'd love to hear from you. Get in touch with us.
+          We&apos;d love to hear from you. Get in touch with us.
         </p>
       </div>
 
