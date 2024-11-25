@@ -396,33 +396,38 @@ const BusinessDetail = () => {
             )}
 
             {business.contactForm && (
+              // Updated Get In Touch form
               <div className="p-6 bg-white rounded-xl shadow-sm border border-gray-100">
                 <h3 className="text-lg font-medium mb-4">Get in Touch</h3>
-                <form className="space-y-4">
+                <form className="space-y-4" onSubmit={(e) => {
+                  e.preventDefault();
+                  const name = e.target.elements.name.value;
+                  const message = e.target.elements.message.value;
+                  const whatsappUrl = `https://wa.me/?text=Name:%20${encodeURIComponent(name)}%0AMessage:%20${encodeURIComponent(message)}`;
+                  window.open(whatsappUrl, '_blank');
+                }}>
                   <input
                     type="text"
+                    name="name"
                     placeholder="Your Name"
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                  <input
-                    type="email"
-                    placeholder="Your Email"
-                    className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
                   />
                   <textarea
+                    name="message"
                     placeholder="Your Message"
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     rows="4"
+                    required
                   ></textarea>
                   <Button
                     type="submit"
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg"
+                    className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg"
                   >
-                    Send Message
+                    Send via WhatsApp
                   </Button>
                 </form>
-              </div>
-            )}
+              </div>            )}
           </div>
         </div>
       </div>
