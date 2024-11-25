@@ -108,89 +108,74 @@ const BusinessDetail = () => {
   return (
     <PageWrapper>
       <div className="lg:px-6">
-      {/* Hero Section */}
-      <div className="max-w-7xl mx-auto relative h-[60vh] bg-gray-100">
+      <div className="relative h-[50vh] max-w-7xl mx-auto px-6">
+        {/* Background Image */}
+        <div className="absolute inset-0 rounded-xl overflow-hidden">
+          <img
+            src={business.images[0]}
+            alt={business.name}
+            className="w-full h-full object-cover rounded-xl"
+          />
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-500/20 to-black/50" />
+        </div>
 
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-50"></div>
-        <img
-          src={business.images[activeImage]}
-          alt={business.name}
-          className="w-full h-full object-cover transition-transform duration-700"
-        />
-
-        {/* Image Navigation */}
-        {totalImages > 1 && (
-          <>
-            <button
-              onClick={prevImage}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 p-3 rounded-full bg-white/70 text-gray-700 hover:bg-white transition-colors"
-            >
-              <ChevronLeft size={24} />
-            </button>
-            <button
-              onClick={nextImage}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 p-3 rounded-full bg-white/70 text-gray-700 hover:bg-white transition-colors"
-            >
-              <ChevronRight size={24} />
-            </button>
-          </>
-        )}
-
-        {/* Overlay Content */}
-        <div className="absolute bottom-0 left-0 right-0 pb-6 px-6 bg-gradient-to-t from-black via-transparent to-transparent">
-          <div className="max-w-7xl mx-auto text-white">
-            <h1 className="text-4xl font-semibold mb-3">{business.name}</h1>
-            <div className="flex items-center gap-4">
-              <span className="capitalize text-lg">{business.category}</span>
-              {business.ratings && (
-                <div className="flex items-center">
-                  <StarFill className="text-yellow-400 mr-1" size={20} />
-                  <span>{business.ratings.toFixed(1)}</span>
+        {/* Content */}
+        <div className="relative h-full flex flex-col justify-end pb-6">
+          {/* Row Container */}
+          <div className="flex flex-col md:flex-row md:justify-between md:items-end space-y-4 md:space-y-0">
+            {/* Left Side Content */}
+            <div className="flex flex-col">
+              {/* Metadata Row */}
+              <div className="flex items-center gap-3 text-white/90 mb-3">
+                <div className="flex items-center gap-1">
+                  <StarFill className="text-yellow-400" size={18} />
+                  <span className="font-medium">{business.ratings.toFixed(1)}</span>
                 </div>
-              )}
-              {business.isVerified && (
-                <span className="inline-flex items-center bg-green-500 text-white text-sm px-2 py-1 rounded-full">
-                  <Check size={14} className="mr-1" />
-                  Verified
-                </span>
-              )}
+                <span className="text-sm">•</span>
+                <span className="capitalize">{business.category}</span>
+                {business.isVerified && (
+                  <span className="inline-flex items-center gap-1 bg-green-500/20 text-green-400 px-2 py-0.5 rounded-full text-xs">
+                    <Check size={10} />
+                    <span className="font-medium">Verified</span>
+                  </span>
+                )}
+              </div>
+
+              {/* Business Name */}
+              <h1 className="text-4xl font-bold text-white mb-3 tracking-tight">
+                {business.name}
+              </h1>
+
+              {/* Description */}
+              <p className="text-md text-white/80 max-w-xl">
+                {business.tagline || `${business.description.substring(0, 100)}...`}
+              </p>
             </div>
-            <div className="flex gap-4 mt-4">
+
+            {/* Right Side Content - Action Buttons */}
+            <div className="flex space-x-2">
               <IconButton
                 icon={HeartIcon}
                 onClick={handleFavorite}
-                label="Toggle favorite"
-                className={`${
-                  isFavorited ? 'text-red-500' : 'text-white'
-                } hover:text-red-600 transition-colors`}
-                size={28}
+                className={`
+                  ${isFavorited ? 'text-red-500' : 'text-gray-200'}
+                  hover:text-red-600 transition-colors
+                `}
+                ariaLabel={isFavorited ? 'Remove from favorites' : 'Add to favorites'}
               />
               <IconButton
                 icon={Share}
                 onClick={handleShare}
-                label="Share business"
-                className="text-white hover:text-blue-300 transition-colors"
-                size={28}
+                className="text-gray-200 hover:text-blue-600 transition-colors"
+                ariaLabel="Share"
               />
-              {business.phone && business.phone.length > 0 && (
-                <Button
-                  onClick={() =>
-                    window.open(
-                      `https://wa.me/${business.phone[0].replace(/\D/g, '')}`,
-                      '_blank'
-                    )
-                  }
-                  className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full flex items-center"
-                >
-                  <Whatsapp className="mr-2" size={24} />
-                  WhatsApp
-                </Button>
-              )}
+              {/* WhatsApp Icon Removed */}
             </div>
           </div>
         </div>
-
       </div>
+
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto py-12">
