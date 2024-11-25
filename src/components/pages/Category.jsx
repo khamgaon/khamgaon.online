@@ -6,7 +6,7 @@ import PageWrapper from '../common/PageWrapper';
 import Loading from '../common/Loading';
 import Error from '../common/Error';
 import BusinessCard from '../common/BusinessCard';
-import { fetchBusinessesByCategory } from '../../api/businesses'; // Update the path as per your project structure
+import { fetchBusinessesByCategory } from '../../api';
 
 /**
  * CategoryPage Component
@@ -24,7 +24,7 @@ const CategoryPage = () => {
   useEffect(() => {
     const fetchBusinesses = async () => {
       try {
-        const data = await fetchBusinessesByCategory(slug); // Ensure this API function is defined and imported correctly
+        const data = await fetchBusinessesByCategory(slug);
         setBusinesses(data);
       } catch (err) {
         setError('Failed to load businesses.');
@@ -73,14 +73,5 @@ const CategoryPage = () => {
     </PageWrapper>
   );
 };
-
-/**
- * PropTypes for CategoryPage
- *
- * Since CategoryPage does not receive any props directly (it uses hooks),
- * there's no need for PropTypes here.
- */
-
-// Removed PropTypes as they are not used
 
 export default CategoryPage;

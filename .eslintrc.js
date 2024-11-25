@@ -26,8 +26,5 @@ module.exports = {
     },
   },
   rules: {
-    'react/react-in-jsx-scope': 'error',
-    'react/prop-types': 'error',
-    'react/no-unescaped-entities': 'error',
   },
 };

@@ -1,4 +1,5 @@
 // src/api/index.js
+
 import categories from '../data/categories';
 import businesses from '../data/businesses';
 
@@ -16,7 +17,7 @@ export const fetchBusinessesByCategory = (categorySlug) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       const filteredBusinesses = businesses.filter(
-        business => business.category === categorySlug
+        (business) => business.category.toLowerCase() === categorySlug.toLowerCase()
       );
       resolve(filteredBusinesses);
     }, MOCK_DELAY);
