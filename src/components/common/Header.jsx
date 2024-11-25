@@ -16,7 +16,7 @@ const Header = () => {
               src={logo}
               alt="Khamgaon Online"
               className="h-8 w-auto rounded"
-              fetchpriority="high"
+              fetchPriority="high"
             />
           </Link>
 

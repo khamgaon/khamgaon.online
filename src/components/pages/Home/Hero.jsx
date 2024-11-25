@@ -28,7 +28,7 @@ const Hero = () => {
               src={logo}
               alt="Khamgaon Online"
               className="w-24 h-24 sm:w-32 sm:h-32 rounded-xl mx-auto shadow-xl hover:shadow-2xl transition-all duration-300"
-              fetchpriority="high"
+              fetchPriority="high"
             />
           </div>
           
