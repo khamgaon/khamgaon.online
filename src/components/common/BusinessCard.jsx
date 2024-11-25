@@ -9,7 +9,7 @@ import IconButton from './IconButton';
 const BusinessImage = ({ src, name, isVerified, isFeatured, onFavorite, onShare, isFavorited }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const HeartIcon = isFavorited ? HeartFill : Heart;
-  
+
   return (
     <div className="relative h-52 overflow-hidden bg-gray-100">
       <img
@@ -21,7 +21,7 @@ const BusinessImage = ({ src, name, isVerified, isFeatured, onFavorite, onShare,
         loading="lazy"
         onLoad={() => setImageLoaded(true)}
       />
-      
+
       {!imageLoaded && (
         <div className="absolute inset-0 bg-gray-200 animate-pulse" />
       )}
@@ -108,15 +108,15 @@ const BusinessInfo = ({ name, category, description, ratings, phone, address, op
           className="group/btn bg-gradient-to-r from-blue-500 to-indigo-500 text-white hover:from-blue-600 hover:to-indigo-600"
         >
           View Details
-          <svg 
-            className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform" 
-            viewBox="0 0 20 20" 
+          <svg
+            className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform"
+            viewBox="0 0 20 20"
             fill="currentColor"
           >
-            <path 
-              fillRule="evenodd" 
-              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" 
-              clipRule="evenodd" 
+            <path
+              fillRule="evenodd"
+              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+              clipRule="evenodd"
             />
           </svg>
         </Button>
@@ -158,20 +158,28 @@ const BusinessCard = ({ business }) => {
 
   const handleShare = async (e) => {
     e.preventDefault();
+    e.stopPropagation();
+
+    const shareUrl = `${window.location.origin}/business/${business.id}`;
+    const shareData = {
+      title: business.name,
+      text: `Check out ${business.name} on Khamgaon Online!`,
+      url: shareUrl,
+    };
+
     try {
-      if (navigator.share) {
-        await navigator.share({
-          title: business.name,
-          text: business.description,
-          url: window.location.origin + `/business/${business.id}`,
-        });
-      } else {
-        const url = `${window.location.origin}/business/${business.id}`;
-        await navigator.clipboard.writeText(url);
-        console.log('Link copied to clipboard!');
-      }
+      await navigator.share(shareData);
     } catch (error) {
-      console.error('Error sharing:', error);
+      if(error.name !== 'AbortError') {
+        // Final fallback to copy link
+        try {
+          await navigator.clipboard.writeText(shareUrl);
+          alert('Link copied to clipboard!');
+        } catch (clipboardError) {
+          console.error('Copying link failed:', clipboardError);
+          alert('Could not share. Please try again.');
+        }
+      }
     }
   };
 
