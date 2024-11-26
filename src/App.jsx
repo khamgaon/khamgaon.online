@@ -12,6 +12,7 @@ import FAQPage from 'components/pages/FAQ';
 import ContactPage from 'components/pages/Contact';
 import Terms from 'components/pages/Terms';
 import PrivacyPolicy from 'components/pages/PrivacyPolicy';
+import Auth from 'components/pages/Auth';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<Auth />} />
             <Route path="/categories" element={<CategoriesPage />} />
             <Route path="/category/:slug" element={<CategoryPage />} />
             <Route path="/business/:id" element={<BusinessDetail />} />

@@ -13,7 +13,7 @@ const Card = ({ icon, title, description, gradientClass, link, children }) => {
           {icon}
         </div>
       )}
-      {title && <h4 className="font-semibold">{title}</h4>}
+      {title && <h3 className="font-bold text-lg mb-1">{title}</h3>}
       {description && <p className="text-gray-600">{description}</p>}
       {children}
     </div>

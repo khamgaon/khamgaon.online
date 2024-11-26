@@ -15,11 +15,14 @@ const Input = ({
   const inputId = `input-${name}`;
 
   return (
-    <div className="mb-6">
-      <label htmlFor={inputId} className="block text-base font-medium text-gray-800 mb-1">
-        {label}
-        {required && <span className="text-red-500 ml-1">*</span>}
-      </label>
+    <div className="mt-2">
+<label 
+  htmlFor={inputId} 
+  className="block text-sm text-left  mb-2"
+>
+  {label}
+  {required && <span className="text-red-500 ml-1">*</span>}
+</label>
       {type === 'textarea' ? (
         <textarea
           id={inputId}
