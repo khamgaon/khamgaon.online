@@ -115,7 +115,7 @@ const Auth = () => {
           gradientClass="gradient-icon-1" 
         >
           <form onSubmit={step === 'phone' ? handlePhoneSubmit : handleOtpSubmit} 
-                className="space-y-8 mt-6">
+                className="mt-6">
             {step === 'phone' ? (
               <Input
                 label="Phone Number"
@@ -142,7 +142,7 @@ const Auth = () => {
                   error={errors.otp}
                   className="text-xl tracking-wider"
                 />
-                <div className="mt-6 text-sm text-center">
+                <div className="mt-2 text-sm text-left">
                   <span className="text-gray-600">Didn't receive OTP? </span>
                   {timer > 0 ? (
                     <span className="text-blue-600 font-medium">Wait {timer}s</span>
@@ -157,12 +157,29 @@ const Auth = () => {
                     </button>
                   )}
                 </div>
+                {step === 'otp' && (
+                  <div className="text-right">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setStep('phone');
+                        setOtp('');
+                        setTimer(30);
+                        setErrors({});
+                      }}
+                      className="text-right text-sm text-gray-400 hover:text-blue-800 mb-0"
+                    >
+                      Change Phone Number?
+                    </button>
+                  </div>
+                )}
+
               </>
             )}
             
             <Button
               type="submit"
-              className="w-full"
+              className="w-full mt-4"
               disabled={loading}
             >
               {loading
