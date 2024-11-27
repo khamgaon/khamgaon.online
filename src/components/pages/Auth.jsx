@@ -76,7 +76,7 @@ const Auth = () => {
     try {
       // TODO: Implement API call to verify OTP
       // const response = await verifyOTP(phone, otp);
-      navigate('/'); // Redirect to home page after successful auth
+      navigate('/onboarding'); // Redirect to onboarding instead of home
     } catch (error) {
       setErrors({ otp: 'Invalid OTP. Please try again.' });
     }

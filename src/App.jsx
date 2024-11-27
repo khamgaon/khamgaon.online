@@ -13,6 +13,7 @@ import ContactPage from 'components/pages/Contact';
 import Terms from 'components/pages/Terms';
 import PrivacyPolicy from 'components/pages/PrivacyPolicy';
 import Auth from 'components/pages/Auth';
+import Onboarding from 'components/pages/Onboarding';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route element={<Layout />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<Auth />} />
+            <Route path="/onboarding" element={<Onboarding />} />
             <Route path="/categories" element={<CategoriesPage />} />
             <Route path="/category/:slug" element={<CategoryPage />} />
             <Route path="/business/:id" element={<BusinessDetail />} />
