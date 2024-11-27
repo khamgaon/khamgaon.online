@@ -2,6 +2,31 @@
 @import 'typography.css';
 @import 'spacing.css';
 
+/* Base Styles */
+:root {
+  /* Import tokens */
+  --font-family-base: 'Inter', sans-serif;
+  --transition-base: all 0.3s ease;
+}
+
+body {
+  font-family: var(--font-family-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Layout */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* Transitions */
+.transition-base {
+  transition: var(--transition-base);
+}
 
 /* Block Styles */
 .block-bg-white,
