@@ -20,12 +20,12 @@
     --gradient-bg-gray: linear-gradient(135deg, rgba(102, 111, 255, 0.5), rgba(204, 102, 255, 0.25));
     
     /* Icon Gradients */
-    --gradient-icon-1: linear-gradient(90deg, #FF6A00, #EE0979);
-    --gradient-icon-2: linear-gradient(90deg, #6A00FF, #F000FF);
-    --gradient-icon-3: linear-gradient(90deg, #00BFFF, #1E90FF);
-    --gradient-icon-4: linear-gradient(90deg, #32CD32, #228B22);
-    --gradient-icon-5: linear-gradient(90deg, #FFD700, #FFA500);
-    --gradient-icon-6: linear-gradient(90deg, #FF4500, #FF6347);
+    --gradient-icon-1: linear-gradient(135deg, rgba(255, 106, 0, 0.85), rgba(238, 9, 121, 0.8));
+    --gradient-icon-2: linear-gradient(135deg, rgba(106, 0, 255, 0.85), rgba(240, 0, 255, 0.8));
+    --gradient-icon-3: linear-gradient(135deg, rgba(0, 191, 255, 0.85), rgba(30, 144, 255, 0.8));
+    --gradient-icon-4: linear-gradient(135deg, rgba(50, 205, 50, 0.85), rgba(34, 139, 34, 0.8));
+    --gradient-icon-5: linear-gradient(135deg, rgba(255, 215, 0, 0.85), rgba(255, 165, 0, 0.8));
+    --gradient-icon-6: linear-gradient(135deg, rgba(255, 69, 0, 0.85), rgba(255, 99, 71, 0.8));
     
     /* Social Media Colors */
     --facebook-blue: #1877f2;
@@ -50,3 +50,29 @@
 .gradient-icon-4 { background: var(--gradient-icon-4); }
 .gradient-icon-5 { background: var(--gradient-icon-5); }
 .gradient-icon-6 { background: var(--gradient-icon-6); }
+
+
+/* Update the transition styles */
+[class*="gradient-icon"] {
+    position: relative;
+    background-size: 200% 200%;
+    background-position: 0% 0%;
+    transition: all 0.3s ease-in-out;
+}
+
+.rounded-full[class*="gradient-icon"] {
+    transform: translateZ(0); /* Force GPU acceleration */
+    backface-visibility: hidden;
+}
+
+[class*="gradient-icon"]:hover {
+    background-position: 100% 100%;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Add active state for better interaction */
+[class*="gradient-icon"]:active {
+    transform: translateY(0px);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
