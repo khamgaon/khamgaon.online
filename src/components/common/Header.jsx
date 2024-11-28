@@ -5,10 +5,13 @@ import { List, PersonCircle, BoxArrowRight } from 'react-bootstrap-icons';
 import { useAuth } from 'context/AuthContext';
 import { useUser } from 'context/UserContext';
 import logo from 'assets/images/logos/logo-text.png';
+import { useClickOutside } from 'hooks/useClickOutside';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const dropdownRef = useClickOutside(() => setIsProfileOpen(false));
+
   const location = useLocation();
   const navigate = useNavigate();
   const { isAuthenticated, logout } = useAuth();
@@ -75,7 +78,7 @@ const Header = () => {
                 </button>
 
                 {isProfileOpen && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border py-1">
+                  <div ref={dropdownRef} className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border py-1">
                     <Link
                       to="/profile"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
