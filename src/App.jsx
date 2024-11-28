@@ -20,6 +20,8 @@ import Profile from 'components/pages/Profile';
 import { AuthProvider } from 'context/AuthContext';
 import { UserProvider } from 'context/UserContext';
 import { GlobalProvider } from 'context/GlobalContext';
+import { PrivateRoute } from 'components/common/PrivateRoute';
+import AddBusiness from 'components/pages/AddBusiness';
 
 
 const App = () => {
@@ -44,6 +46,14 @@ const App = () => {
                     <Route path="/contact" element={<ContactPage />} />
                     <Route path="/terms" element={<Terms />} />
                     <Route path="/privacy" element={<PrivacyPolicy />} />
+                    <Route
+                      path="/add-business"
+                      element={
+                        <PrivateRoute>
+                          <AddBusiness />
+                        </PrivateRoute>
+                      }
+                    />
                   </Route>
                 </Routes>
               </Router>

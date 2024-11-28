@@ -86,6 +86,15 @@ const Header = () => {
                     >
                       Your Profile
                     </Link>
+                    <Link
+                      to="/add-business"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                      onClick={() => setIsProfileOpen(false)}
+                    >
+                      <span className="flex items-center">
+                        Add Business
+                      </span>
+                    </Link>
                     <div className="border-t my-1"></div>
                     <button
                       onClick={handleLogout}
