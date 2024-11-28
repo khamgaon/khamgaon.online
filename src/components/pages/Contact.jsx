@@ -4,21 +4,31 @@ import PageWrapper from 'components/common/PageWrapper';
 import Input from 'components/common/Input';
 import Form from 'components/common/Form';
 import Card from 'components/common/Card';
+import { Text } from 'design-system/components/Text';
+import { Whatsapp } from 'react-bootstrap-icons';
 import { SvgPattern1 } from 'components/common/Svgs';
 
-const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    message: '',
-  });
+const ContactCard = ({ icon: Icon, title, description, children }) => (
+  <Card
+    variant="elevated"
+    size="lg"
+    animation="hover"
+    title={title}
+    description={description}
+    gradientClass="gradient-icon-2"
+  >
+    {children}
+  </Card>
+);
 
+const Contact = () => {
+  const [formData, setFormData] = useState({ name: '', message: '' });
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-
-    // Clear error on change
     setErrors({ ...errors, [name]: '' });
   };
 
@@ -32,25 +42,17 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const validationErrors = validate();
-    if (Object.keys(validationErrors).length !== 0) {
+    if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
     }
 
-    // Format message for WhatsApp
-    const formattedMessage = `
-*New Contact Form Message*
-Name: ${formData.name}
-Message: ${formData.message}
-    `.trim();
-
-    const whatsappNumber = '917038778801'; // Replace with your actual number
-
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-      formattedMessage
-    )}`;
-
+    setLoading(true);
+    const whatsappUrl = `https://wa.me/917038778801?text=Name: ${encodeURIComponent(
+      formData.name
+    )}%0AMessage: ${encodeURIComponent(formData.message)}`;
     window.open(whatsappUrl, '_blank');
+    setLoading(false);
   };
 
   return (
@@ -60,18 +62,18 @@ Message: ${formData.message}
       bottomSvg={SvgPattern1}
     >
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-thin mb-4 text-gray-800">Contact Us</h1>
-        <p className="text-lg font-light text-gray-600">
-          We&apos;d love to hear from you. Get in touch with us.
-        </p>
+        <Text variant="h1" className="mb-4">
+          Get in Touch
+        </Text>
+        <Text variant="body" className="max-w-2xl mx-auto">
+          Have questions about Khamgaon Online? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+        </Text>
       </div>
 
       <div className="grid grid-cols-1 gap-12 max-w-2xl mx-auto">
-        {/* Contact Form Wrapped in Card */}
-        <Card
+        <ContactCard
           title="Send Us a Message"
           description="Fill out the form below, and we'll get back to you shortly."
-          gradientClass="gradient-icon-1"
         >
           <Form onSubmit={handleSubmit} submitLabel="Send Message via WhatsApp">
             <Input
@@ -95,23 +97,22 @@ Message: ${formData.message}
               error={errors.message}
             />
           </Form>
-        </Card>
+        </ContactCard>
 
-        {/* WhatsApp Contact Info Wrapped in Card */}
-        <Card
-          title="Need Immediate Assistance?"
-          description="Reach out to us directly on WhatsApp."
-          gradientClass="gradient-icon-2"
+        <ContactCard
+          title="Direct Contact"
+          description="Reach out to us directly on WhatsApp"
         >
           <a
             href="https://wa.me/917038778801"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 hover:text-blue-800 font-medium"
+            className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium mt-4"
           >
+            <Whatsapp className="mr-2" />
             +91 7038778801
           </a>
-        </Card>
+        </ContactCard>
       </div>
     </PageWrapper>
   );

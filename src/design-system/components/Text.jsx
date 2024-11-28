@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 const variants = {
   h1: 'text-4xl font-light mb-4',
-  h2: 'text-2xl font-light mb-3',
-  h3: 'text-xl font-medium mb-2',
+  h2: 'text-2xl font-medium mb-3',
+  h3: 'text-lg font-medium mb-2',
   body: 'text-base leading-relaxed',
   caption: 'text-sm text-gray-600'
 };

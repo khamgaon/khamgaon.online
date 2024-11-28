@@ -76,3 +76,26 @@
     transform: translateY(0px);
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
+
+
+/* Card Gradients */
+.card-gradient-1 {
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+  }
+  .card-gradient-2 {
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+  }
+  .card-gradient-3 {
+    background: linear-gradient(135deg, #059669, #0ea5e9);
+  }
+  .card-gradient-4 {
+    background: linear-gradient(135deg, #db2777, #7c3aed);
+  }
+  
+  /* Card Hover Effects */
+  .card-hover-lift {
+    transition: transform 0.3s ease-in-out;
+  }
+  .card-hover-lift:hover {
+    transform: translateY(-4px);
+  }

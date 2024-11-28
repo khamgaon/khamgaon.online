@@ -3,11 +3,25 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Section from './Section';
 import Card from './Card';
+import { Text } from 'design-system/components/Text';
 import { ChevronRight } from 'react-bootstrap-icons';
 import { fetchCategories } from '../../api';
 import { importIcon } from '../../utils/importIcon';
 import Loading from './Loading';
 import Error from './Error';
+
+const CategorySkeleton = () => (
+  <div className="animate-pulse">
+    <Card
+      variant="default"
+      size="md"
+      className="h-40"
+    >
+      <div className="w-16 h-16 bg-gray-200 rounded-full mx-auto mb-4" />
+      <div className="h-4 bg-gray-200 rounded w-20 mx-auto" />
+    </Card>
+  </div>
+);
 
 const Categories = ({ showTitle, limit }) => {
   const [categories, setCategories] = useState([]);
@@ -29,7 +43,6 @@ const Categories = ({ showTitle, limit }) => {
     loadCategories();
   }, []);
 
-  if (loading) return <Loading />;
   if (error) return <Error message={error} />;
 
   const displayCategories = limit ? categories.slice(0, limit) : categories;
@@ -37,36 +50,52 @@ const Categories = ({ showTitle, limit }) => {
   return (
     <Section ariaLabel="Categories on Khamgaon.online">
       {showTitle && (
-        <>
-          <h3 className="text-center text-gray-700 text-2xl mb-2">
+        <div className="text-center mb-8">
+          <Text variant="h2">
             Explore Categories on Khamgaon.online
-          </h3>
-          <p className="text-center text-gray-700 font-light text-lg mb-8">
+          </Text>
+          <Text variant="body" className="mt-2">
             Uncover the rich array of services, businesses, and iconic landmarks that Khamgaon has to offer.
-          </p>
-        </>
+          </Text>
+        </div>
       )}
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 mb-8">
-        {displayCategories.map((category) => {
-          const IconComponent = importIcon(category.icon);
-          return (
-            <Card
-              key={category.id}
-              icon={<IconComponent />}
-              title={category.title}
-              gradientClass={category.gradientClass}
-              link={`/category/${category.slug}`}
-            />
-          );
-        })}
-        {limit && categories.length > limit && (
-          <Card
-            key="view-all"
-            icon={<ChevronRight className="text-gray-500" />}
-            title="View All"
-            gradientClass="bg-gradient-to-br from-gray-100 to-gray-200"
-            link="/categories"
-          />
+      
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+        {loading ? (
+          Array(limit || 6).fill(null).map((_, index) => (
+            <CategorySkeleton key={index} />
+          ))
+        ) : (
+          <>
+            {displayCategories.map((category) => {
+              const IconComponent = importIcon(category.icon);
+              return (
+                <Card
+                  key={category.id}
+                  icon={<IconComponent />}
+                  title={category.title}
+                  variant="elevated"
+                  animation="hover"
+                  size="md"
+                  gradientClass={category.gradientClass}
+                  link={`/category/${category.slug}`}
+                />
+              );
+            })}
+            
+            {limit && categories.length > limit && (
+              <Card
+                icon={<ChevronRight />}
+                title="View All"
+                variant="outlined"
+                animation="scale"
+                size="md"
+                link="/categories"
+                className="text-blue-600 hover:text-blue-700"
+                gradientClass='gradient-icon-1'
+              />
+            )}
+          </>
         )}
       </div>
     </Section>
@@ -75,12 +104,7 @@ const Categories = ({ showTitle, limit }) => {
 
 Categories.propTypes = {
   showTitle: PropTypes.bool,
-  limit: PropTypes.number,
-};
-
-Categories.defaultProps = {
-  showTitle: false,
-  limit: null,
+  limit: PropTypes.number
 };
 
 export default Categories;

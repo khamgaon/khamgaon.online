@@ -2,7 +2,15 @@
 import React from 'react';
 import Section from 'components/common/Section';
 import Card from 'components/common/Card';
-import { People, Briefcase, Calendar, Newspaper, Shop, Chat } from 'react-bootstrap-icons';
+import { Text } from 'design-system/components/Text';
+import { 
+  People, 
+  Briefcase, 
+  Calendar, 
+  Newspaper, 
+  Shop, 
+  Chat 
+} from 'react-bootstrap-icons';
 
 const Features = () => {
   const features = [
@@ -46,22 +54,27 @@ const Features = () => {
 
   return (
     <Section className="block-bg-gray" ariaLabel="Key Features">
-      <div className="my-8">
-        <h3 className="text-center text-gray-700 text-2xl mb-2">
+      <div className="text-center mb-12">
+        <Text variant="h2" className="mb-4">
           Khamgaon Online is your one-stop platform for exploring Khamgaon.
-        </h3>
-        <p className="text-center text-gray-700 font-light text-lg">
+        </Text>
+        <Text variant="body">
           From local businesses and professionals to community events, we aim to connect residents and foster community engagement.
-        </p>
+        </Text>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8">
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {features.map((feature, index) => (
           <Card
             key={index}
             icon={feature.icon}
             title={feature.title}
             description={feature.description}
+            variant="elevated"
+            size="lg"
+            animation="hover"
             gradientClass={feature.gradientClass}
+            className="h-full"
           />
         ))}
       </div>
