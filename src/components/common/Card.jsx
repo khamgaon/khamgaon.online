@@ -24,6 +24,12 @@ const ANIMATIONS = {
   scale: 'transition-transform duration-300 hover:scale-105'
 };
 
+const ALIGNMENTS = {
+  left: 'text-left',
+  center: 'text-center',
+  right: 'text-right'
+};
+
 const Card = ({
   icon,
   title,
@@ -33,6 +39,7 @@ const Card = ({
   children,
   variant = 'default',
   size = 'md',
+  align = 'center', // New prop with default
   animation = 'none',
   className = '',
   onClick
@@ -41,10 +48,10 @@ const Card = ({
 
   const baseStyles = `
     rounded-lg 
-    text-center
     ${VARIANTS[variant]}
     ${SIZES[size]}
     ${ANIMATIONS[animation]}
+    ${ALIGNMENTS[align]}
     ${className}
   `;
 

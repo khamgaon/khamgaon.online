@@ -16,6 +16,7 @@ import Terms from 'components/pages/Terms';
 import PrivacyPolicy from 'components/pages/PrivacyPolicy';
 import Auth from 'components/pages/Auth';
 import Onboarding from 'components/pages/Onboarding';
+import Profile from 'components/pages/Profile';
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
             <Route element={<Layout />}>
               <Route path="/" element={<HomePage />} />
               <Route path="/login" element={<Auth />} />
+              <Route path="/profile" element={<Profile />} />
               <Route path="/onboarding" element={<Onboarding />} />
               <Route path="/categories" element={<CategoriesPage />} />
               <Route path="/category/:slug" element={<CategoryPage />} />

@@ -1,0 +1,14 @@
+/* src/components/pages/Profile/Profile.css */
+.profile-cover-gradient {
+  background: linear-gradient(180deg, 
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.5) 100%);
+}
+
+.profile-stats-item {
+  transition: all 0.2s ease;
+}
+
+.profile-stats-item:hover {
+  transform: translateY(-2px);
+}
