@@ -10,31 +10,84 @@ import { ProfileHeader } from './ProfileHeader';
 import { ProfileTabs } from './ProfileTabs';
 import { ReviewCard } from './ReviewCard';
 import './profile.css';
+import { uploadImage } from 'utils/imageUpload';
+
+import { EditProfileModal } from './EditProfileModal';
+
+const USER = {
+  name: "John Doe",
+  username: "johndoe123",
+  profilePicture: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
+  coverPhoto: "https://images.unsplash.com/photo-1579546929518-9e396f3cc809",
+  about: "Food enthusiast & local explorer",
+  stats: {
+    favorites: 12,
+    reviews: 28,
+    followers: 156
+  },
+  favorites: [], 
+  reviews: []
+};
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState('about');
   
-  const user = {
-    name: "John Doe",
-    username: "johndoe123",
-    profilePicture: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
-    coverPhoto: "https://images.unsplash.com/photo-1579546929518-9e396f3cc809",
-    about: "Food enthusiast & local explorer",
-    stats: {
-      favorites: 12,
-      reviews: 28,
-      followers: 156
-    },
-    favorites: [], 
-    reviews: []
+
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [user, setUser] = useState(USER);
+
+  const handleEditProfile = () => {
+    setIsEditModalOpen(true);
   };
+
+  const handleSaveProfile = (updatedData) => {
+    setUser(prev => ({
+      ...prev,
+      ...updatedData
+    }));
+    // TODO: API call to update profile
+  };
+
+  const handleShareProfile = async () => {
+    const shareData = {
+      title: `${user.name}'s Profile`,
+      text: `Check out ${user.name}'s profile on our platform!`,
+      url: window.location.href
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else {
+        // Fallback: Copy to clipboard
+        await navigator.clipboard.writeText(window.location.href);
+        // TODO: Show toast notification
+        alert('Profile link copied to clipboard!');
+      }
+    } catch (error) {
+      console.error('Error sharing:', error);
+    }
+  };
+
+  const handleUpdateImage = async (type, image) => {
+    try {
+      const imageUrl = await uploadImage(image);
+      setUser(prev => ({
+        ...prev,
+        [type === 'profile' ? 'profilePicture' : 'coverPhoto']: imageUrl
+      }));
+    } catch (error) {
+      console.error('Error updating image:', error);
+      // TODO: Show error toast
+    }
+  };  
 
   return (
     <PageWrapper>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
 
-         <ProfileHeader user={user} />
-
+      <ProfileHeader user={user} onUpdateImage={handleUpdateImage} />
+      
         <Card className="mb-8 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
             <div>
@@ -43,8 +96,8 @@ const Profile = () => {
             </div>
             
             <div className="flex gap-4">
-              <Button variant="outline">Edit Profile</Button>
-              <Button variant="primary">Share Profile</Button>
+              <Button variant="outline" onClick={handleEditProfile}>Edit Profile</Button>
+              <Button variant="primary" onClick={handleShareProfile}>Share Profile</Button>
             </div>
           </div>
 
@@ -111,6 +164,12 @@ const Profile = () => {
           )}
         </div>
       </div>
+      <EditProfileModal
+        isOpen={isEditModalOpen}
+        onClose={() => setIsEditModalOpen(false)}
+        user={user}
+        onSave={handleSaveProfile}
+      />
     </PageWrapper>
   );
 };
