@@ -17,30 +17,41 @@ import PrivacyPolicy from 'components/pages/PrivacyPolicy';
 import Auth from 'components/pages/Auth';
 import Onboarding from 'components/pages/Onboarding';
 import Profile from 'components/pages/Profile';
+import { AuthProvider } from 'context/AuthContext';
+import { UserProvider } from 'context/UserContext';
+import { GlobalProvider } from 'context/GlobalContext';
+
 
 const App = () => {
   return (
-    <ThemeProvider>
-      <HelmetProvider>
-        <Router>
-          <Routes>
-            <Route element={<Layout />}>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/login" element={<Auth />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/onboarding" element={<Onboarding />} />
-              <Route path="/categories" element={<CategoriesPage />} />
-              <Route path="/category/:slug" element={<CategoryPage />} />
-              <Route path="/business/:id" element={<BusinessDetail />} />
-              <Route path="/faq" element={<FAQPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/terms" element={<Terms />} />
-              <Route path="/privacy" element={<PrivacyPolicy />} />
-            </Route>
-          </Routes>
-        </Router>
-      </HelmetProvider>
-    </ThemeProvider>
+    <AuthProvider>
+      <UserProvider>
+        <GlobalProvider>
+
+          <ThemeProvider>
+            <HelmetProvider>
+              <Router>
+                <Routes>
+                  <Route element={<Layout />}>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/login" element={<Auth />} />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/onboarding" element={<Onboarding />} />
+                    <Route path="/categories" element={<CategoriesPage />} />
+                    <Route path="/category/:slug" element={<CategoryPage />} />
+                    <Route path="/business/:id" element={<BusinessDetail />} />
+                    <Route path="/faq" element={<FAQPage />} />
+                    <Route path="/contact" element={<ContactPage />} />
+                    <Route path="/terms" element={<Terms />} />
+                    <Route path="/privacy" element={<PrivacyPolicy />} />
+                  </Route>
+                </Routes>
+              </Router>
+            </HelmetProvider>
+          </ThemeProvider>
+        </GlobalProvider>
+      </UserProvider>
+    </AuthProvider >
   );
 };
 

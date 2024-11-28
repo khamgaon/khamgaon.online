@@ -6,6 +6,7 @@ import SEO from 'components/common/SEO';
 import seoConfig from 'constants/seo';
 import Header from 'components/common/Header';
 import Footer from 'components/common/Footer';
+import { Notifications } from 'components/common/Notifications';
 
 function Layout() {
   const location = useLocation();
@@ -16,6 +17,7 @@ function Layout() {
     <>
       <SEO {...currentSeoConfig} />
       <Header />
+      <Notifications />
       <Outlet />
       <Footer />
     </>

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { GeoAlt, Clock, Star, Check, Share, Whatsapp, Heart, HeartFill } from 'react-bootstrap-icons';
 import Button from './Button';
 import IconButton from './IconButton';
+import { useGlobal } from 'context/GlobalContext';
 
 const BusinessImage = ({ src, name, isVerified, isFeatured, onFavorite, onShare, isFavorited }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -15,9 +16,8 @@ const BusinessImage = ({ src, name, isVerified, isFeatured, onFavorite, onShare,
       <img
         src={src}
         alt={name}
-        className={`w-full h-full object-cover transform group-hover:scale-105 transition-all duration-500 ${
-          imageLoaded ? 'opacity-100' : 'opacity-0'
-        }`}
+        className={`w-full h-full object-cover transform group-hover:scale-105 transition-all duration-500 ${imageLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
         loading="lazy"
         onLoad={() => setImageLoaded(true)}
       />
@@ -142,18 +142,12 @@ const BusinessInfo = ({ name, category, description, ratings, phone, address, op
 );
 
 const BusinessCard = ({ business }) => {
-  const [isFavorited, setIsFavorited] = useState(false);
+  const { favorites, toggleFavorite } = useGlobal();
+  const isFavorited = favorites.includes(business.id);
 
   const handleFavorite = (e) => {
     e.preventDefault();
-    setIsFavorited(!isFavorited);
-    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-    if (isFavorited) {
-      localStorage.setItem('favorites', JSON.stringify(favorites.filter(id => id !== business.id)));
-    } else {
-      favorites.push(business.id);
-      localStorage.setItem('favorites', JSON.stringify(favorites));
-    }
+    toggleFavorite(business.id);
   };
 
   const handleShare = async (e) => {
@@ -170,7 +164,7 @@ const BusinessCard = ({ business }) => {
     try {
       await navigator.share(shareData);
     } catch (error) {
-      if(error.name !== 'AbortError') {
+      if (error.name !== 'AbortError') {
         // Final fallback to copy link
         try {
           await navigator.clipboard.writeText(shareUrl);
@@ -184,8 +178,7 @@ const BusinessCard = ({ business }) => {
   };
 
   useEffect(() => {
-    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-    setIsFavorited(favorites.includes(business.id));
+    toggleFavorite(business.id);
   }, [business.id]);
 
   return (

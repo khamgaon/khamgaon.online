@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import PageWrapper from 'components/common/PageWrapper';
 import { Text } from 'design-system/components/Text';
-import { HeartFill, StarFill,  Person } from 'react-bootstrap-icons';
+import { HeartFill, StarFill, Person } from 'react-bootstrap-icons';
 import Button from 'components/common/Button';
 import Card from 'components/common/Card';
 import BusinessCard from 'components/common/BusinessCard';
@@ -13,39 +13,28 @@ import './profile.css';
 import { uploadImage } from 'utils/imageUpload';
 
 import { EditProfileModal } from './EditProfileModal';
-
-const USER = {
-  name: "John Doe",
-  username: "johndoe123",
-  profilePicture: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
-  coverPhoto: "https://images.unsplash.com/photo-1579546929518-9e396f3cc809",
-  about: "Food enthusiast & local explorer",
-  stats: {
-    favorites: 12,
-    reviews: 28,
-    followers: 156
-  },
-  favorites: [], 
-  reviews: []
-};
+import { useUser } from 'context/UserContext';
+import { useGlobal } from 'context/GlobalContext';
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState('about');
-  
+
 
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [user, setUser] = useState(USER);
+  const { user, updateUser } = useUser();
+  const { addNotification } = useGlobal();
 
   const handleEditProfile = () => {
     setIsEditModalOpen(true);
   };
 
-  const handleSaveProfile = (updatedData) => {
-    setUser(prev => ({
-      ...prev,
-      ...updatedData
-    }));
-    // TODO: API call to update profile
+  const handleSaveProfile = async (data) => {
+    try {
+      await updateUser(data);
+      addNotification('Profile updated successfully', 'success');
+    } catch (error) {
+      addNotification('Failed to update profile', 'error');
+    }
   };
 
   const handleShareProfile = async () => {
@@ -80,21 +69,21 @@ const Profile = () => {
       console.error('Error updating image:', error);
       // TODO: Show error toast
     }
-  };  
+  };
 
   return (
     <PageWrapper>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
 
-      <ProfileHeader user={user} onUpdateImage={handleUpdateImage} />
-      
+        <ProfileHeader user={user} onUpdateImage={handleUpdateImage} />
+
         <Card className="mb-8 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
             <div>
               <Text variant="h1" className="text-2xl font-bold mb-1">{user.name}</Text>
               <Text variant="body" className="text-gray-600 text-left">@{user.username}</Text>
             </div>
-            
+
             <div className="flex gap-4">
               <Button variant="outline" onClick={handleEditProfile}>Edit Profile</Button>
               <Button variant="primary" onClick={handleShareProfile}>Share Profile</Button>
@@ -120,7 +109,7 @@ const Profile = () => {
                 <Text variant="h3" className="mb-4">About</Text>
                 <Text variant="body">{user.about}</Text>
               </Card>
-              
+
               <Card align='left'>
                 <Text variant="h3" className="mb-4">Contact Information</Text>
                 <div className="space-y-4">

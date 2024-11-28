@@ -1,13 +1,17 @@
 // src/components/pages/Auth.jsx
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import PageWrapper from '../common/PageWrapper';
 import Card from '../common/Card';
 import Input from '../common/Input';
 import Button from '../common/Button';
 import { ReactComponent as SvgPattern1 } from 'assets/svgs/svg-bottom-left.svg';
+import { useAuth } from 'context/AuthContext';
+import { useGlobal } from 'context/GlobalContext';
+import { api } from 'api';
 
 const Auth = () => {
+  const { login } = useAuth();
   const navigate = useNavigate();
   const [step, setStep] = useState('phone'); // 'phone' or 'otp'
   const [phone, setPhone] = useState('');
@@ -16,6 +20,9 @@ const Auth = () => {
   const [canResend, setCanResend] = useState(false);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+  const location = useLocation();
+  const { addNotification } = useGlobal();
+
 
   useEffect(() => {
     let interval;
@@ -46,43 +53,24 @@ const Auth = () => {
 
   const handlePhoneSubmit = async (e) => {
     e.preventDefault();
-    const phoneError = validatePhone(phone);
-    if (phoneError) {
-      setErrors({ phone: phoneError });
-      return;
-    }
-
-    setLoading(true);
     try {
-      // TODO: Implement API call to send OTP
-      // const response = await sendOTP(phone);
+      await api.sendOTP(phone);
       setStep('otp');
-      setErrors({});
     } catch (error) {
-      setErrors({ phone: 'Failed to send OTP. Please try again.' });
+      addNotification('Failed to send OTP', 'error');
     }
-    setLoading(false);
   };
 
   const handleOtpSubmit = async (e) => {
     e.preventDefault();
-    const otpError = validateOtp(otp);
-    if (otpError) {
-      setErrors({ otp: otpError });
-      return;
-    }
-
-    setLoading(true);
     try {
-      // TODO: Implement API call to verify OTP
-      // const response = await verifyOTP(phone, otp);
-      navigate('/onboarding'); // Redirect to onboarding instead of home
+      const { token } = await api.verifyOTP(phone, otp);
+      login(token);
+      navigate(location.state?.returnUrl || '/profile');
     } catch (error) {
-      setErrors({ otp: 'Invalid OTP. Please try again.' });
+      addNotification('Invalid OTP', 'error');
     }
-    setLoading(false);
   };
-
   const handleResendOtp = async () => {
     if (!canResend) return;
     setLoading(true);
@@ -104,7 +92,7 @@ const Auth = () => {
       topSvg={SvgPattern1}
       bottomSvg={SvgPattern1}
     >
-      <div className="max-w-md mx-auto py-12 px-4">        
+      <div className="max-w-md mx-auto py-12 px-4">
         <Card
           title={step === 'phone' ? 'Login / Sign Up' : 'Enter OTP'}
           description={
@@ -112,17 +100,17 @@ const Auth = () => {
               ? 'Enter your mobile number to continue'
               : `We've sent an OTP to +91 ${phone}`
           }
-          gradientClass="gradient-icon-1" 
+          gradientClass="gradient-icon-1"
         >
-          <form onSubmit={step === 'phone' ? handlePhoneSubmit : handleOtpSubmit} 
-                className="mt-6">
+          <form onSubmit={step === 'phone' ? handlePhoneSubmit : handleOtpSubmit}
+            className="mt-6">
             {step === 'phone' ? (
               <Input
                 label="Phone Number"
                 type="tel"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                placeholder="Enter 10-digit mobile number" 
+                placeholder="Enter 10-digit mobile number"
                 maxLength={10}
                 required
                 error={errors.phone}
@@ -176,7 +164,7 @@ const Auth = () => {
 
               </>
             )}
-            
+
             <Button
               type="submit"
               className="w-full mt-4"
@@ -185,8 +173,8 @@ const Auth = () => {
               {loading
                 ? 'Please wait...'
                 : step === 'phone'
-                ? 'Get OTP'
-                : 'Verify & Continue'}
+                  ? 'Get OTP'
+                  : 'Verify & Continue'}
             </Button>
           </form>
         </Card>
