@@ -22,6 +22,7 @@ import Button from '../common/Button';
 import Loading from '../common/Loading';
 import { useGlobal } from 'context/GlobalContext';
 import { useAuth } from 'context/AuthContext';
+import ReviewForm from 'components/common/ReviewForm';
 
 const BusinessDetail = () => {
   const { id } = useParams();
@@ -284,7 +285,41 @@ const BusinessDetail = () => {
                   </div>
                 </div>
               )}
-
+              {isAuthenticated ? (
+                <div className="p-6 bg-white rounded-xl shadow-sm border border-gray-100">
+                  <h3 className="text-lg font-medium mb-4">Write a Review</h3>
+                  <ReviewForm
+                    onSubmit={async (review) => {
+                      try {
+                        // TODO: Replace with actual API call
+                        await new Promise(resolve => setTimeout(resolve, 1000));
+                        const newReview = {
+                          ...review,
+                          user: user.name,
+                          date: new Date().toISOString()
+                        };
+                        setBusiness(prev => ({
+                          ...prev,
+                          reviews: [...prev.reviews, newReview]
+                        }));
+                        addNotification('Review submitted successfully!', 'success');
+                      } catch (error) {
+                        addNotification('Failed to submit review', 'error');
+                      }
+                    }}
+                  />
+                </div>
+              ) : (
+                <div className="text-center py-6">
+                  <p className="text-gray-600 mb-4">Please login to write a review</p>
+                  <Link
+                    to="/login"
+                    className="text-blue-600 hover:text-blue-700 font-medium"
+                  >
+                    Login Now
+                  </Link>
+                </div>
+              )}
             </div>
 
             {/* Sidebar */}
