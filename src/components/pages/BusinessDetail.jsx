@@ -23,6 +23,7 @@ import Loading from '../common/Loading';
 import { useGlobal } from 'context/GlobalContext';
 import { useAuth } from 'context/AuthContext';
 import ReviewForm from 'components/common/ReviewForm';
+import { api } from 'api';
 
 const BusinessDetail = () => {
   const { id } = useParams();
@@ -32,6 +33,7 @@ const BusinessDetail = () => {
   const [business, setBusiness] = useState(null);
   const { isAuthenticated } = useAuth();
   const { addNotification, favorites, toggleFavorite } = useGlobal();
+  const [isSubmittingReview, setIsSubmittingReview] = useState(false);
 
   useEffect(() => {
     // Fetch business data
@@ -113,6 +115,41 @@ const BusinessDetail = () => {
 
   const HeartIcon = isFavorited ? HeartFill : Heart;
 
+
+  const handleReviewSubmit = async (review) => {
+    if (!isAuthenticated) {
+      navigate('/auth', { state: { returnUrl: location.pathname } });
+      return;
+    }
+
+    setIsSubmittingReview(true);
+    try {
+      const { review: newReview } = await api.addReview(business.id, review);
+
+      setBusiness(prev => ({
+        ...prev,
+        reviews: [newReview, ...prev.reviews],
+        ratings: calculateNewRating(prev.reviews, newReview.rating)
+      }));
+
+      addNotification('Review submitted successfully!', 'success');
+    } catch (error) {
+      console.error('Failed to submit review:', error);
+      addNotification('Failed to submit review', 'error');
+    } finally {
+      setIsSubmittingReview(false);
+    }
+  };
+
+  // Helper to calculate new average rating
+  const calculateNewRating = (existingReviews, newRating) => {
+    const totalRatings = existingReviews.length + 1;
+    const sumRatings = existingReviews.reduce((sum, review) =>
+      sum + review.rating, 0) + newRating;
+    return (sumRatings / totalRatings).toFixed(1);
+  };
+
+
   return (
     <PageWrapper>
       <div className="lg:px-6">
@@ -138,7 +175,7 @@ const BusinessDetail = () => {
                 <div className="flex items-center gap-3 text-white/90 mb-3">
                   <div className="flex items-center gap-1">
                     <StarFill className="text-yellow-400" size={18} />
-                    <span className="font-medium">{business.ratings.toFixed(1)}</span>
+                    <span className="font-medium">{business.ratings}</span>
                   </div>
                   <span className="text-sm">•</span>
                   <span className="capitalize">{business.category}</span>
@@ -289,34 +326,19 @@ const BusinessDetail = () => {
                 <div className="p-6 bg-white rounded-xl shadow-sm border border-gray-100">
                   <h3 className="text-lg font-medium mb-4">Write a Review</h3>
                   <ReviewForm
-                    onSubmit={async (review) => {
-                      try {
-                        // TODO: Replace with actual API call
-                        await new Promise(resolve => setTimeout(resolve, 1000));
-                        const newReview = {
-                          ...review,
-                          user: user.name,
-                          date: new Date().toISOString()
-                        };
-                        setBusiness(prev => ({
-                          ...prev,
-                          reviews: [...prev.reviews, newReview]
-                        }));
-                        addNotification('Review submitted successfully!', 'success');
-                      } catch (error) {
-                        addNotification('Failed to submit review', 'error');
-                      }
-                    }}
+                    onSubmit={handleReviewSubmit}
+                    isSubmitting={isSubmittingReview}
                   />
                 </div>
               ) : (
-                <div className="text-center py-6">
+                <div className="text-center p-6 bg-white rounded-xl shadow-sm border border-gray-100">
                   <p className="text-gray-600 mb-4">Please login to write a review</p>
                   <Link
-                    to="/login"
+                    to="/auth"
+                    state={{ returnUrl: location.pathname }}
                     className="text-blue-600 hover:text-blue-700 font-medium"
                   >
-                    Login Now
+                    Login to Review
                   </Link>
                 </div>
               )}

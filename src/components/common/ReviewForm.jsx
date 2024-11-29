@@ -2,20 +2,31 @@ import { useState } from "react";
 import RatingInput from "./RatingInput";
 import Button from "./Button";
 
-const ReviewForm = ({ onSubmit }) => {
+const ReviewForm = ({ onSubmit, isSubmitting }) => {
     const [rating, setRating] = useState(5);
     const [comment, setComment] = useState('');
+    const [error, setError] = useState('');
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError('');
+
+        if (!comment.trim()) {
+            setError('Please enter a review comment');
+            return;
+        }
+
+        try {
+            await onSubmit({ rating, comment });
+            setRating(5);
+            setComment('');
+        } catch (err) {
+            setError('Failed to submit review. Please try again.');
+        }
+    };
 
     return (
-        <form
-            onSubmit={(e) => {
-                e.preventDefault();
-                onSubmit({ rating, comment });
-                setRating(5);
-                setComment('');
-            }}
-            className="space-y-4"
-        >
+        <form onSubmit={handleSubmit} className="space-y-4">
             <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                     Rating
@@ -37,8 +48,16 @@ const ReviewForm = ({ onSubmit }) => {
                 />
             </div>
 
-            <Button type="submit" variant="primary">
-                Submit Review
+            {error && (
+                <p className="text-sm text-red-500">{error}</p>
+            )}
+
+            <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full"
+            >
+                {isSubmitting ? 'Submitting...' : 'Submit Review'}
             </Button>
         </form>
     );

@@ -46,8 +46,15 @@ export const api = {
 
   // Reviews
   addReview: async (businessId, review) => {
-    return mockApiCall({ success: true, review });
-  },
+    const mockReview = {
+      id: Date.now(),
+      user: "Current User", // Would come from auth in real API
+      date: new Date().toISOString(),
+      ...review
+    };
+    console.log('mockReview:', mockReview);
+    return mockApiCall({ success: true, review: mockReview });
+  }
 
 };
 
