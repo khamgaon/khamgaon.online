@@ -1,17 +1,26 @@
 // src/components/pages/AddBusiness.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PlusCircle, Trash } from 'react-bootstrap-icons';
+import {
+    PlusCircle, Trash, Image,
+    X
+} from 'react-bootstrap-icons';
 import Form from '../common/Form';
 import Input from '../common/Input';
 import Button from '../common/Button';
 import IconButton from '../common/IconButton';
 import PageWrapper from '../common/PageWrapper';
 import { Text } from 'design-system/components/Text';
+import Combobox from 'components/common/Combobox';
+import MapPicker from 'components/common/MapPicker';
+import ImageUpload from 'components/common/ImageUpload';
+import ImageGrid from 'components/common/ImageGrid';
+import DaySchedule from 'components/common/DaySchedule';
 
 const validateForm = (data) => {
     const errors = {};
     if (!data.name) errors.name = 'Business name is required';
+    if (!data.tagline) errors.tagline = 'Tagline is required';
     if (!data.description) errors.description = 'Description is required';
     if (!data.category) errors.category = 'Category is required';
     if (!data.address) errors.address = 'Address is required';
@@ -26,22 +35,32 @@ const validateForm = (data) => {
 const AddBusiness = () => {
     const navigate = useNavigate();
     const [errors, setErrors] = useState({});
+    const [is24x7, setIs24x7] = useState(false);
+
     const [formData, setFormData] = useState({
         name: '',
+        tagline: '',
         description: '',
         category: '',
         address: '',
         phone: [''],
         email: '',
         operatingHours: {
-            monday_to_friday: '',
-            weekends: ''
+            monday: '09:00 - 21:00',
+            tuesday: '09:00 - 21:00',
+            wednesday: '09:00 - 21:00',
+            thursday: '09:00 - 21:00',
+            friday: '09:00 - 21:00',
+            saturday: '10:00 - 14:00',
+            sunday: 'Closed'
         },
-        images: ['', ''],
-        services: [''],
+        images: [],
+        services_products: [''],
         pricing: [{
-            service: '',
-            price: ''
+            service_product: '',
+            price: '',
+            description: '',
+            images: [] // Array of {file, preview}
         }],
         specialOffers: [{
             title: '',
@@ -51,14 +70,23 @@ const AddBusiness = () => {
             question: '',
             answer: ''
         }],
-        owner: {
-            name: '',
-            position: '',
-            bio: ''
-        },
         certifications: [''],
         contactForm: true
     });
+
+    const [categories, setCategories] = useState([
+        'restaurants',
+        'furniture',
+        'hospitals',
+        'financial-services',
+        'automotive',
+        'pet-services'
+    ]);
+
+    const handleAddCategory = (newCategory) => {
+        setCategories(prev => [...prev, newCategory]);
+        handleChange({ target: { name: 'category', value: newCategory } });
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -93,6 +121,14 @@ const AddBusiness = () => {
         }));
     };
 
+    const handleSetCover = (idx) => {
+        const newImages = formData.images.map((img, i) => ({
+            ...img,
+            isCover: i === idx
+        }));
+        setFormData(prev => ({ ...prev, images: newImages }));
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -103,6 +139,19 @@ const AddBusiness = () => {
             window.scrollTo(0, 0);
             return;
         }
+
+        const formDataToSubmit = new FormData();
+
+        // Append all form fields
+        Object.keys(formData).forEach(key => {
+            if (key === 'images') {
+                formData.images.forEach(image => {
+                    formDataToSubmit.append('images', image.file);
+                });
+            } else {
+                formDataToSubmit.append(key, JSON.stringify(formData[key]));
+            }
+        });
 
         try {
             // TODO: Replace with actual API call
@@ -141,6 +190,16 @@ const AddBusiness = () => {
                                 error={errors.name}
                             />
                             <Input
+                                label="Tagline"
+                                name="tagline"
+                                value={formData.tagline}
+                                onChange={handleChange}
+                                required
+                                error={errors.tagline}
+                                placeholder="A short, catchy description of your business"
+                                helperText="This will appear below your business name"
+                            />
+                            <Input
                                 label="Description"
                                 type="textarea"
                                 name="description"
@@ -149,33 +208,76 @@ const AddBusiness = () => {
                                 required
                                 error={errors.description}
                             />
-                            <Input
+                            <Combobox
                                 label="Category"
-                                type="select"
-                                name="category"
                                 value={formData.category}
-                                onChange={handleChange}
+                                options={categories}
+                                onChange={(value) => handleChange({ target: { name: 'category', value } })}
+                                onAddNew={handleAddCategory}
                                 required
-                                options={[
-                                    { value: 'restaurants', label: 'Restaurants' },
-                                    { value: 'furniture', label: 'Furniture' },
-                                    { value: 'hospitals', label: 'Hospitals' },
-                                    { value: 'financial-services', label: 'Financial Services' },
-                                    { value: 'automotive', label: 'Automotive' },
-                                    { value: 'pet-services', label: 'Pet Services' }
-                                ]}
+                                error={errors.category}
                             />
+
+                            {/* Images */}
+                            <section className="space-y-4">
+                                <div className="flex justify-between items-center">
+                                    <label className="block text-sm font-medium text-gray-700">
+                                        Business Images <span className="text-red-500">*</span>
+                                    </label>
+                                </div>
+
+                                <input
+                                    type="file"
+                                    id="business-images"
+                                    onChange={(e) => {
+                                        const files = Array.from(e.target.files);
+                                        const newImages = files.map(file => ({
+                                            file,
+                                            preview: URL.createObjectURL(file)
+                                        }));
+                                        setFormData(prev => ({
+                                            ...prev,
+                                            images: [...prev.images, ...newImages]
+                                        }));
+                                    }}
+                                    accept="image/*"
+                                    multiple
+                                    className="hidden"
+                                />
+
+                                <ImageGrid
+                                    images={formData.images}
+                                    onAdd={() => document.getElementById('business-images').click()}
+                                    onRemove={(idx) => {
+                                        const newImages = [...formData.images];
+                                        if (newImages[idx].isCover && newImages.length > 1) {
+                                            newImages[0].isCover = true;
+                                        }
+                                        newImages.splice(idx, 1);
+                                        setFormData(prev => ({ ...prev, images: newImages }));
+                                    }}
+                                    onSetCover={handleSetCover}
+                                    inputId="business-images"
+                                />
+                                {errors.images && <p className="text-sm text-red-500">{errors.images}</p>}
+                            </section>
+
                         </section>
 
                         {/* Contact Information */}
                         <section className="space-y-4">
                             <h3 className="text-lg font-medium">Contact Information</h3>
-                            <Input
-                                label="Address"
-                                name="address"
+                            <MapPicker
                                 value={formData.address}
-                                onChange={handleChange}
+                                onChange={(location) => {
+                                    setFormData(prev => ({
+                                        ...prev,
+                                        address: location.address,
+                                        locationMap: `https://maps.google.com/?q=${location.lat},${location.lng}`
+                                    }));
+                                }}
                                 required
+                                error={errors.address}
                             />
                             {formData.phone.map((num, idx) => (
                                 <div key={idx} className="flex gap-2">
@@ -205,136 +307,177 @@ const AddBusiness = () => {
                             </Button>
                         </section>
 
-                        {/* Images */}
                         <section className="space-y-4">
-                            <h3 className="text-lg font-medium">Images</h3>
-                            {formData.images.map((url, idx) => (
-                                <div key={idx} className="flex gap-2">
-                                    <Input
-                                        label={`Image URL ${idx + 1}`}
-                                        type="url"
-                                        value={url}
-                                        onChange={(e) => handleArrayChange('images', idx, e.target.value)}
-                                        required={idx === 0}
-                                        placeholder="https://example.com/image.jpg"
-                                    />
-                                    {idx > 0 && (
-                                        <IconButton
-                                            icon={Trash}
-                                            onClick={() => handleRemove('images', idx)}
-                                            className="self-end mb-2"
-                                        />
-                                    )}
-                                </div>
-                            ))}
-                            <Button
-                                type="button"
-                                variant="outline"
-                                onClick={() => handleAdd('images')}
-                                className="flex items-center gap-2"
-                            >
-                                <PlusCircle /> Add Image
-                            </Button>
-                        </section>
-
-                        {/* Services & Pricing */}
-                        <section className="space-y-4">
-                            <h3 className="text-lg font-medium">Services & Pricing</h3>
+                            <h3 className="text-lg font-medium">Services / Products & Pricing</h3>
                             {formData.pricing.map((item, idx) => (
-                                <div key={idx} className="flex gap-2">
-                                    <Input
-                                        label="Service Name"
-                                        value={item.service}
-                                        onChange={(e) => handleArrayChange('pricing', idx, { ...item, service: e.target.value })}
-                                        required
-                                    />
-                                    <Input
-                                        label="Price Range"
-                                        value={item.price}
-                                        onChange={(e) => handleArrayChange('pricing', idx, { ...item, price: e.target.value })}
-                                        required
-                                        placeholder="₹1,000 - ₹2,000"
-                                    />
-                                    {idx > 0 && (
-                                        <IconButton
-                                            icon={Trash}
-                                            onClick={() => handleRemove('pricing', idx)}
-                                            className="self-end mb-2"
+                                <div key={idx} className="p-4 border rounded-lg space-y-4">
+                                    <div className="flex justify-between">
+                                        <h4 className="text-md font-medium">Item {idx + 1}</h4>
+                                        {idx > 0 && (
+                                            <IconButton
+                                                icon={Trash}
+                                                onClick={() => handleRemove('pricing', idx)}
+                                                className="text-red-500 hover:text-red-600"
+                                            />
+                                        )}
+                                    </div>
+
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <Input
+                                            label="Service / Product Name"
+                                            value={item.service_product}
+                                            onChange={(e) => handleArrayChange('pricing', idx, {
+                                                ...item,
+                                                service_product: e.target.value
+                                            })}
+                                            required
                                         />
-                                    )}
+                                        <Input
+                                            label="Price Range"
+                                            value={item.price}
+                                            onChange={(e) => handleArrayChange('pricing', idx, {
+                                                ...item,
+                                                price: e.target.value
+                                            })}
+                                            required
+                                            placeholder="₹1,000 - ₹2,000"
+                                        />
+                                    </div>
+
+                                    <Input
+                                        label="Description"
+                                        type="textarea"
+                                        value={item.description}
+                                        onChange={(e) => handleArrayChange('pricing', idx, {
+                                            ...item,
+                                            description: e.target.value
+                                        })}
+                                        placeholder="Describe your service/product"
+                                    />
+                                    <div className="space-y-2">
+                                        <label className="block text-sm font-medium text-gray-700">Product/Service Images</label>
+                                        <input
+                                            type="file"
+                                            accept="image/*"
+                                            multiple
+                                            className="hidden"
+                                            id={`images-${idx}`}
+                                            onChange={(e) => {
+                                                const files = Array.from(e.target.files);
+                                                const newImages = files.map(file => ({
+                                                    file,
+                                                    preview: URL.createObjectURL(file),
+                                                    isCover: item.images?.length === 0 // First image is cover by default
+                                                }));
+
+                                                handleArrayChange('pricing', idx, {
+                                                    ...item,
+                                                    images: [...(item.images || []), ...newImages]
+                                                });
+                                            }}
+                                        />
+
+                                        <ImageGrid
+                                            images={item.images || []}
+                                            onAdd={() => document.getElementById(`images-${idx}`).click()}
+                                            onRemove={(imgIdx) => {
+                                                const newImages = [...item.images];
+                                                if (newImages[imgIdx].isCover && newImages.length > 1) {
+                                                    newImages[0].isCover = true;
+                                                }
+                                                newImages.splice(imgIdx, 1);
+                                                handleArrayChange('pricing', idx, {
+                                                    ...item,
+                                                    images: newImages
+                                                });
+                                            }}
+                                            onSetCover={(imgIdx) => {
+                                                const newImages = item.images.map((img, i) => ({
+                                                    ...img,
+                                                    isCover: i === imgIdx
+                                                }));
+                                                handleArrayChange('pricing', idx, {
+                                                    ...item,
+                                                    images: newImages
+                                                });
+                                            }}
+                                            inputId={`images-${idx}`}
+                                        />
+                                    </div>
+
                                 </div>
                             ))}
+
                             <Button
                                 type="button"
                                 variant="outline"
                                 onClick={() => handleAdd('pricing')}
                                 className="flex items-center gap-2"
                             >
-                                <PlusCircle /> Add Service & Price
+                                <PlusCircle /> Add Service / Product
                             </Button>
                         </section>
-
-                        {/* Business Owner */}
-                        <section className="space-y-4">
-                            <h3 className="text-lg font-medium">Business Owner Details</h3>
-                            <Input
-                                label="Owner Name"
-                                name="owner.name"
-                                value={formData.owner.name}
-                                onChange={(e) => setFormData(prev => ({
-                                    ...prev,
-                                    owner: { ...prev.owner, name: e.target.value }
-                                }))}
-                                required
-                            />
-                            <Input
-                                label="Position"
-                                name="owner.position"
-                                value={formData.owner.position}
-                                onChange={(e) => setFormData(prev => ({
-                                    ...prev,
-                                    owner: { ...prev.owner, position: e.target.value }
-                                }))}
-                                required
-                            />
-                            <Input
-                                label="Bio"
-                                type="textarea"
-                                name="owner.bio"
-                                value={formData.owner.bio}
-                                onChange={(e) => setFormData(prev => ({
-                                    ...prev,
-                                    owner: { ...prev.owner, bio: e.target.value }
-                                }))}
-                                required
-                            />
-                        </section>
-
                         {/* Operating Hours */}
                         <section className="space-y-4">
-                            <h3 className="text-lg font-medium">Operating Hours</h3>
-                            <Input
-                                label="Weekday Hours"
-                                name="operatingHours.monday_to_friday"
-                                value={formData.operatingHours.monday_to_friday}
-                                onChange={(e) => setFormData(prev => ({
-                                    ...prev,
-                                    operatingHours: { ...prev.operatingHours, monday_to_friday: e.target.value }
-                                }))}
-                                placeholder="9:00 AM - 6:00 PM"
-                                required
-                            />
-                            <Input
-                                label="Weekend Hours"
-                                name="operatingHours.weekends"
-                                value={formData.operatingHours.weekends}
-                                onChange={(e) => setFormData(prev => ({
-                                    ...prev,
-                                    operatingHours: { ...prev.operatingHours, weekends: e.target.value }
-                                }))}
-                                placeholder="10:00 AM - 4:00 PM"
-                                required
-                            />
+                            <div className="flex justify-between items-center">
+                                <h3 className="text-lg font-medium">Operating Hours</h3>
+                                <label className="flex items-center gap-2">
+                                    <input
+                                        type="checkbox"
+                                        checked={is24x7}
+                                        onChange={(e) => {
+                                            setIs24x7(e.target.checked);
+                                            if (e.target.checked) {
+                                                setFormData(prev => ({
+                                                    ...prev,
+                                                    operatingHours: {
+                                                        monday: '24/7',
+                                                        tuesday: '24/7',
+                                                        wednesday: '24/7',
+                                                        thursday: '24/7',
+                                                        friday: '24/7',
+                                                        saturday: '24/7',
+                                                        sunday: '24/7'
+                                                    }
+                                                }));
+                                            }
+                                        }}
+                                        className="rounded text-blue-600"
+                                    />
+                                    Open 24/7
+                                </label>
+                            </div>
+
+                            {!is24x7 && (
+                                <div className="space-y-2 border rounded-lg p-4">
+                                    {Object.entries(formData.operatingHours).map(([day, schedule]) => (
+                                        <DaySchedule
+                                            key={day}
+                                            day={day.charAt(0).toUpperCase() + day.slice(1)}
+                                            schedule={schedule}
+                                            onChange={(newSchedule) => {
+                                                setFormData(prev => ({
+                                                    ...prev,
+                                                    operatingHours: {
+                                                        ...prev.operatingHours,
+                                                        [day]: newSchedule
+                                                    }
+                                                }));
+                                            }}
+                                            is24x7={is24x7}
+                                            onToggleClosed={(isOpen) => {
+                                                setFormData(prev => ({
+                                                    ...prev,
+                                                    operatingHours: {
+                                                        ...prev.operatingHours,
+                                                        [day]: isOpen ? '09:00 - 17:00' : 'Closed'
+                                                    }
+                                                }));
+                                            }}
+                                        />
+                                    ))}
+                                </div>
+                            )}
                         </section>
                     </div>
                 </Form>
